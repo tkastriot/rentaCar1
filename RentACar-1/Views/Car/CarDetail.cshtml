@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .car-details {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+            .car-image img {
+                width: 100%;
+                height: auto;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+        h2, h3 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .car-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .description {
+            margin-top: 20px;
+            text-align: justify;
+        }
+
+        .price {
+            color: #007bff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .btn-book {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            .btn-book:hover {
+                background-color: #218838;
+            }
+    </style>
+    <title>Car Details</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Rent A Car</h1>
+    </div>
+
+    <div class="car-details">
+        <div class="car-image">
+            <img src="car-image.jpg" alt="Car Image">
+        </div>
+        <h2>Volkswagen Golf</h2>
+        <h3>1.0 Life GT 081 TSI M6F</h3>
+        <div class="car-info">
+            <p><i class="fas fa-map-marker-alt"></i> Location: Munich, Germany</p>
+            <p><i class="fas fa-calendar-alt"></i> Year: 2021</p>
+            <p><i class="fas fa-cogs"></i> Automatic Transmission</p>
+            <p><i class="fas fa-gas-pump"></i> Fuel Type: Gasoline</p>
+            <p><i class="fas fa-bolt"></i> Power: 150 KW</p>
+        </div>
+        <div class="description">
+            <p>This Volkswagen Golf is a stylish and efficient car with advanced features. It offers a smooth driving experience, making it perfect for both city commutes and long journeys.</p>
+        </div>
+        <p class="price"><i class="fas fa-dollar-sign"></i> Price: $25,000</p>
+        <button class="btn btn-book">Book Now</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+
+</html>

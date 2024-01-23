@@ -1,0 +1,192 @@
+﻿@model RentACar_1.ViewModels.CarIndexViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .car-container {
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .car-details {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+            .car-details h3 {
+                margin-top: 0;
+                font-size: 1.5rem;
+            }
+
+            .car-details p {
+                margin-bottom: 10px;
+                font-size: 1.1rem;
+            }
+
+        .price {
+            color: #007bff;
+            font-size: 1.2rem;
+        }
+
+        .availability {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+
+        .no-cars {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #dc3545;
+        }
+
+        .car-item {
+            display: flex;
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .car-item:hover {
+            transform: scale(1.02);
+        }
+
+        .car-image {
+            flex: 0 0 200px;
+            margin-right: 15px;
+        }
+
+        .car-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .car-details {
+            width: calc(100% - 240px);
+        }
+
+        .car-header {
+            margin-bottom: 10px;
+        }
+
+            .car-header h3 {
+                margin: 0;
+                color: #333;
+            }
+
+         .car-info {
+             display: flex;
+         }
+
+        .car-info p {
+            margin: 5px;
+            color: #555;
+            width: -webkit-fill-available;
+        }
+
+        .model {
+            font-weight: bold;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .price {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+    </style>
+    <title>Rent A Car</title>
+</head>
+
+<body>
+
+    <div class="car-container">
+        <h2 class="text-center">Rent A Car</h2>
+
+        @using (Html.BeginForm("FilterCars", "Car", FormMethod.Post, new { @class = "mb-4" }))
+        {
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    @Html.DropDownListFor(m => m.Filters.Brand, Model.BrandList, "Select Brand", new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.DropDownListFor(m => m.Filters.Category, Model.CategoryList, "Select Category", new { @class = "form-control" })
+                </div>
+                <div class="form-group col-md-4">
+                    @Html.DropDownListFor(m => m.Filters.City, Model.CityList, "Select City", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    @Html.TextBoxFor(m => m.Filters.FromDate, new { type = "date", @class = "form-control" })
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.TextBoxFor(m => m.Filters.ToDate, new { type = "date", @class = "form-control" })
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
+        }
+
+        @if (Model.Cars.Any())
+        {
+            @foreach (var car in Model.Cars)
+            {
+                 <a href="@Url.Action("CarDetail", "Car", new { carId = car.CarID })">
+                <div class="car-item">
+                    <div class="car-image">
+                        <img src="@car.CarDetail?.ImageUrl" alt="Car Image" class="img-fluid">
+                    </div>
+                    <div class="car-details">
+                        <div class="car-header">
+                            <h3>@car.CarDetail?.Brand</h3>
+                            <p class="model"><i class="fas fa-car"></i> @car.CarDetail?.Category</p>
+                        </div>
+                        <div class="car-info">
+                            <p class="info-deatils"><i class="fas fa-map-marker-alt"></i> City: @car.CarDetail?.City</p>
+                            <p class="info-deatils"><i class="fas fa-calendar-alt"></i> Year: @car.CarDetail?.Year</p>
+                            <p class="info-deatils"><i class="fas fa-cogs"></i> @(car.CarDetail?.IsAutomatic ?? false ? "Automatic" : "Manual")</p>
+                            <p class="info-deatils"><i class="fas fa-gas-pump"></i> Fuel Type: @car.CarDetail?.FuelType</p>
+                            <p class="info-deatils"><i class="fas fa-bolt"></i> Power: @car.CarDetail?.Power KW</p>
+                        </div>
+                        <p class="price"><i class="fas fa-dollar-sign"></i> Price Per Day: $@car.PricePerDay</p>
+                    </div>
+                </div>
+                </a>
+            }
+        }
+        else
+        {
+            <p class="no-cars">No cars match the selected criteria.</p>
+        }
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+
+</html>
