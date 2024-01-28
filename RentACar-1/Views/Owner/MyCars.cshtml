@@ -1,91 +1,165 @@
 ﻿@model List<RentACar_1.ViewModels.OwnerCarsViewModel>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Cars</title>
     <!-- Add any necessary CSS or meta tags here -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet">
     <style>
-        /* Add CSS styles for the confirmation modal */
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Car Styles */
+        .car {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+            .car h2 {
+                color: #333;
+                margin-top: 0;
+            }
+
+            .car p {
+                margin: 5px 0;
+            }
+
+        .car-buttons {
+            margin-top: 10px;
+        }
+
+            .car-buttons button {
+                margin-right: 10px;
+                padding: 8px 15px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                background-color: #007bff;
+                color: #fff;
+            }
+
+                .car-buttons button:hover {
+                    background-color: #0056b3;
+                }
+
+        /* Modal Styles */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            display: none;
+            position: fixed;
+            z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .modal-content {
             background-color: #fefefe;
             margin: 15% auto;
             padding: 20px;
-            border: 1px solid #888;
+            border-radius: 5px;
             width: 80%;
         }
 
         .modal-buttons {
             text-align: right;
+            margin-top: 10px;
         }
+
+            .modal-buttons button {
+                margin-left: 10px;
+                padding: 8px 15px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                background-color: #007bff;
+                color: #fff;
+            }
+
+                .modal-buttons button:hover {
+                    background-color: #0056b3;
+                }
     </style>
 </head>
 <body>
-    <h1>My Cars</h1>
-    <div>
-        @if (TempData["ErrorMessage"] != null)
-        {
-            <div class="alert alert-danger" role="alert">
-                @TempData["ErrorMessage"]
-            </div>
-        }
-        @if (Model.Any())
-        {
-            @foreach (var car in Model)
+    <div class="container">
+        <h1>My Cars</h1>
+        <div>
+            @if (TempData["ErrorMessage"] != null)
             {
-                <div>
-                    <h2>@car.Brand - @car.Category</h2>
-                    <p>Year: @car.Year</p>
-                    <p>Description: @car.Description</p>
-                    <p>Is Automatic: @car.IsAutomatic</p>
-                    <p>Fuel Type: @car.FuelType</p>
-                    <p>Power: @car.Power KW</p>
-                    <p>City: @car.City</p>
-                    <p>Registration Number: @car.RegistrationNumber</p>
-                    <p>Price Per Day: $@car.PricePerDay</p>
-
-                    <!-- Edit car button -->
-                    <button>
-                        <a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">Edit Car</a>
-                    </button>
-
-                    <!-- Delete car button -->
-                    <button onclick="showConfirmation('@car.CarId')">Delete Car</button>
-
-                    <h3>Booking Schedule:</h3>
-                    @if (car.BookingSchedule.Any())
-                    {
-                        <ul>
-                            @foreach (var booking in car.BookingSchedule)
-                            {
-                                <li>From: @booking.FromDate - To: @booking.ToDate</li>
-                            }
-                        </ul>
-                    }
-                    else
-                    {
-                        <p>No bookings scheduled for this car.</p>
-                    }
+                <div class="alert alert-danger" role="alert">
+                    @TempData["ErrorMessage"]
                 </div>
             }
-        }
-        else
-        {
-            <p>No cars found.</p>
-        }
+            @if (Model.Any())
+            {
+                @foreach (var car in Model)
+                {
+                    <div class="car">
+                        <h2>@car.Brand - @car.Category</h2>
+                        <p>Year: @car.Year</p>
+                        <p>Description: @car.Description</p>
+                        <p>Is Automatic: @car.IsAutomatic</p>
+                        <p>Fuel Type: @car.FuelType</p>
+                        <p>Power: @car.Power KW</p>
+                        <p>City: @car.City</p>
+                        <p>Registration Number: @car.RegistrationNumber</p>
+                        <p>Price Per Day: $@car.PricePerDay</p>
+
+                        <!-- Edit car button -->
+                        <div class="car-buttons">
+                            <button>
+                                <a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">Edit Car</a>
+                            </button>
+
+                            <!-- Delete car button -->
+                            <button onclick="showConfirmation('@car.CarId')">Delete Car</button>
+                        </div>
+
+                        <h3>Booking Schedule:</h3>
+                        @if (car.BookingSchedule.Any())
+                        {
+                            <ul>
+                                @foreach (var booking in car.BookingSchedule)
+                                {
+                                    <li>From: @booking.FromDate - To: @booking.ToDate</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No bookings scheduled for this car.</p>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No cars found.</p>
+            }
+        </div>
     </div>
 
     <!-- Confirmation modal -->

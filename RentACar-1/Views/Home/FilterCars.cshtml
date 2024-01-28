@@ -1,20 +1,30 @@
 ﻿@model RentACar_1.ViewModels.HomeIndexViewModel
 
 <style>
+	.filters-container {
+		display: flex !important;
+	}
+
 	.model-search-content {
-		position: absolute !important;
+		postion: relative !important;
+		bottom: 0 !important;
+	}
+
+	.col-md-12 {
+		padding: 0 !important;
 	}
 </style>
 
 @using (Html.BeginForm("FilterCars", "Car", FormMethod.Post, new { @class = "mb-4" }))
 {
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="model-search-content">
-					<div class="row">
-						<div class="col-md-offset-1 col-md-2 col-sm-12">
-							<div class="single-model-search">
+	<div class="filters-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="model-search-content">
+						<div class="row">
+							<div class="col-md-offset-1 col-md-2 col-sm-12">
+								<div class="single-model-search">
 									<h2>Select Brand</h2>
 									<div class="model-select-icon">
 										@Html.DropDownListFor(m => m.Filters.Brand, Model.BrandList, "Select Brand", new { @class = "form-control" })
@@ -78,4 +88,5 @@
 				</div>
 			</div>
 		</div>
+	</div>
 }

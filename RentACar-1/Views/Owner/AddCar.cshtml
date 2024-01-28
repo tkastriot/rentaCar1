@@ -1,83 +1,91 @@
 ﻿@model RentACar_1.ViewModels.AddCarViewModel
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Car</title>
-    <!-- Add any necessary CSS or meta tags here -->
+    <!-- Required meta tags -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Add New Car</h1>
-    <div>
-        @using (Html.BeginForm("AddCar", "Owner", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
+    <div class="content">
+        <div class="container">
+            <h1>Add New Car</h1>
+            <div class="row align-items-stretch no-gutters contact-wrap">
+                <div class="col-md-12">
+                    <div class="form h-100">
+                        @using (Html.BeginForm("AddCar", "Owner", FormMethod.Post, new { @class = "mb-5", id = "contactForm", name = "contactForm" }))
+                        {
+                            @Html.AntiForgeryToken()
 
-            <div class="form-group">
-                <label for="Brand">Brand:</label>
-                @Html.TextBoxFor(m => m.Brand, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Brand, "", new { @class = "text-danger" })
-            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="name" class="col-form-label">Brand *</label>
+                                    @Html.TextBoxFor(m => m.Brand, new { @class = "form-control", id = "name", placeholder = "Your name" })
+                                    @Html.ValidationMessageFor(m => m.Brand, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="email" class="col-form-label">Category *</label>
+                                    @Html.TextBoxFor(m => m.Category, new { @class = "form-control", id = "email", placeholder = "Your email" })
+                                    @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                <label for="Category">Category:</label>
-                @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
-            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="budget" class="col-form-label">Year *</label>
+                                    @Html.TextBoxFor(m => m.Year, new { @class = "form-control", id = "budget" })
+                                    @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                <label for="Year">Year:</label>
-                @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
-            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="message" class="col-form-label">Description *</label>
+                                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id = "message", rows = "4", placeholder = "Write your message" })
+                                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                <label for="Description">Description:</label>
-                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4" })
-                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
-            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group mb-3">
+                                    <label for="budget" class="col-form-label">Is Automatic</label>
+                                    <div>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(m => m.IsAutomatic, true) Yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            @Html.RadioButtonFor(m => m.IsAutomatic, false) No
+                                        </label>
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.IsAutomatic, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                <label for="IsAutomatic">Is Automatic:</label>
-                <div>
-                    @Html.RadioButtonFor(m => m.IsAutomatic, true) Yes
-                    @Html.RadioButtonFor(m => m.IsAutomatic, false) No
+                            <!-- Add more form fields here -->
+
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input type="submit" value="Add Car" class="btn btn-primary rounded-0 py-2 px-4">
+                                    <span class="submitting"></span>
+                                </div>
+                            </div>
+                        }
+                    </div>
                 </div>
-                @Html.ValidationMessageFor(m => m.IsAutomatic, "", new { @class = "text-danger" })
             </div>
-
-            <div class="form-group">
-                <label for="FuelType">Fuel Type:</label>
-                @Html.TextBoxFor(m => m.FuelType, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.FuelType, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                <label for="Power">Power (KW):</label>
-                @Html.TextBoxFor(m => m.Power, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Power, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                <label for="PricePerDay">Price For Day:</label>
-                @Html.TextBoxFor(m => m.PricePerDay, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.PricePerDay, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                <label for="RegistrationNumber">Registration Number:</label>
-                @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.RegistrationNumber, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group">
-                <label for="City">City:</label>
-                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
-            </div>
-
-            <button type="submit" class="btn btn-primary">Add Car</button>
-        }
+        </div>
     </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

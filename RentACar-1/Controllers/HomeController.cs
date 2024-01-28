@@ -1,24 +1,37 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using RentACar_1.Data;
 using RentACar_1.Models;
+using RentACar_1.ViewModels;
 
 namespace RentACar_1.Controllers
 {
     public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+	{
+		private readonly ApplicationDbContext _dbContext;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+		public HomeController(ApplicationDbContext dbContext)
+		{
+			_dbContext = dbContext;
+		}
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+		public IActionResult Index()
+		{
+			var filters = new CarFilterViewModel();
 
-        public IActionResult Privacy()
+			var viewModel = new HomeIndexViewModel
+			{
+				Filters = filters,
+				BrandList = new SelectList(_dbContext.CarDetails.Select(cd => cd.Brand).Distinct()),
+				CategoryList = new SelectList(_dbContext.CarDetails.Select(cd => cd.Category).Distinct()),
+				CityList = new SelectList(_dbContext.CarDetails.Select(cd => cd.City).Distinct())
+			};
+
+			return View(viewModel);
+		}
+		public IActionResult Privacy()
         {
             return View();
         }

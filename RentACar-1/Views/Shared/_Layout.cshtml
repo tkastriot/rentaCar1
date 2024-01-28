@@ -119,6 +119,8 @@
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                                     </li>
                                     <li class="scroll"><a href="#contact">contact</a></li>
+
+                                    <partial name="_LoginPartial" />
                                 </ul><!--/.nav -->
                             </div><!-- /.navbar-collapse -->
                             <!--    <div class="container-fluid">
@@ -183,7 +185,7 @@
 
     <!--Custom JS-->
     <script src="assets/js/custom.js"></script>
-
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
