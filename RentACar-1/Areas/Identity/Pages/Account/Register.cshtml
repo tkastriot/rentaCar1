@@ -32,6 +32,13 @@
                 <label asp-for="Input.PhoneNumber">PhoneNumber</label>
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
+         <!--<div class="form-group row">
+                <label class="col-md-2" asp-for="RoleName"> </label>
+                <div class="col-md-10">
+                    <select asp-for="RoleName" class="form-control" asp-items="@RentACar_1.Utility.Helper.GetRolesForDropDown()"></select>
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+               </div>-->
             <div class="form-floating mb-3">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
                 <label asp-for="Input.Email">Email</label>

@@ -26,35 +26,63 @@
                             <div class="row">
                                 <div class="col-md-6 form-group mb-3">
                                     <label for="name" class="col-form-label">Brand *</label>
-                                    @Html.TextBoxFor(m => m.Brand, new { @class = "form-control", id = "name", placeholder = "Your name" })
+                                    @Html.TextBoxFor(m => m.Brand, new { @class = "form-control", id = "name", placeholder = "Brand" })
                                     @Html.ValidationMessageFor(m => m.Brand, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-md-6 form-group mb-3">
-                                    <label for="email" class="col-form-label">Category *</label>
-                                    @Html.TextBoxFor(m => m.Category, new { @class = "form-control", id = "email", placeholder = "Your email" })
+                                    <label for="category" class="col-form-label">Category *</label>
+                                    @Html.TextBoxFor(m => m.Category, new { @class = "form-control", id = "category", placeholder = "Category" })
                                     @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12 form-group mb-3">
-                                    <label for="budget" class="col-form-label">Year *</label>
-                                    @Html.TextBoxFor(m => m.Year, new { @class = "form-control", id = "budget" })
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="year" class="col-form-label">Year *</label>
+                                    @Html.TextBoxFor(m => m.Year, new { @class = "form-control", id = "year", placeholder = "Year" })
                                     @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12 form-group mb-3">
-                                    <label for="message" class="col-form-label">Description *</label>
-                                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id = "message", rows = "4", placeholder = "Write your message" })
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="description" class="col-form-label">Description *</label>
+                                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", id = "description", rows = "4", placeholder = "Description" })
                                     @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-12 form-group mb-3">
-                                    <label for="budget" class="col-form-label">Is Automatic</label>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="fuelType" class="col-form-label">Fuel Type *</label>
+                                    @Html.TextBoxFor(m => m.FuelType, new { @class = "form-control", id = "fuelType", placeholder = "Fuel Type" })
+                                    @Html.ValidationMessageFor(m => m.FuelType, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="power" class="col-form-label">Power *</label>
+                                    @Html.TextBoxFor(m => m.Power, new { @class = "form-control", id = "power", placeholder = "Power" })
+                                    @Html.ValidationMessageFor(m => m.Power, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="city" class="col-form-label">City *</label>
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", id = "city", placeholder = "City" })
+                                    @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="registrationNumber" class="col-form-label">Registration Number *</label>
+                                    @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control", id = "registrationNumber", placeholder = "Registration Number" })
+                                    @Html.ValidationMessageFor(m => m.RegistrationNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="pricePerDay" class="col-form-label">Price Per Day *</label>
+                                    @Html.TextBoxFor(m => m.PricePerDay, new { @class = "form-control", id = "pricePerDay", placeholder = "Price Per Day" })
+                                    @Html.ValidationMessageFor(m => m.PricePerDay, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="isAutomatic" class="col-form-label">Is Automatic *</label>
                                     <div>
                                         <label class="radio-inline">
                                             @Html.RadioButtonFor(m => m.IsAutomatic, true) Yes
@@ -67,11 +95,9 @@
                                 </div>
                             </div>
 
-                            <!-- Add more form fields here -->
-
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <input type="submit" value="Add Car" class="btn btn-primary rounded-0 py-2 px-4">
+                                    <button type="submit" class="btn btn-primary">Add Car</button>
                                     <span class="submitting"></span>
                                 </div>
                             </div>

@@ -48,7 +48,7 @@
 						<div class="single-model-search">
 							<h2>car condition</h2>
 							<div class="model-select-icon">
-								<select class="form-control">
+										@Html.DropDownListFor(m => m.Filters.IsAutomatic, yesNoList, "Select Category", new { @class = "form-control" })
 
 									<option value="default">condition</option><!-- /.option-->
 
@@ -65,7 +65,6 @@
 						<div class="single-model-search">
 							<h2>select From Date</h2>
 							<div class="model-select-icon">
-
 									@Html.TextBoxFor(m => m.Filters.FromDate, new { type = "date", @class = "form-control" })
 							</div><!-- /.model-select-icon -->
 						</div>

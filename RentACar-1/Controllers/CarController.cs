@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -59,7 +60,12 @@ namespace RentACar_1.Controllers
                 .Include(c => c.Bookings)
                 .Include(c => c.CarDetail)
                 .Where(c =>
-                        (filters.IsAutomatic == null || c.CarDetail.IsAutomatic == filters.IsAutomatic));
+                    (filters.IsAutomatic == null || c.CarDetail.IsAutomatic == filters.IsAutomatic) &&
+                    (string.IsNullOrEmpty(filters.Brand) || c.CarDetail.Brand == filters.Brand) &&
+                    (string.IsNullOrEmpty(filters.Category) || c.CarDetail.Category == filters.Category) &&
+                    (string.IsNullOrEmpty(filters.City) || c.CarDetail.City == filters.City) &&
+                    (!filters.FromDate.HasValue || !filters.ToDate.HasValue ||
+                     !c.Bookings.Any(b => (filters.FromDate >= b.ToDate || filters.ToDate <= b.FromDate))));
 
             return cars;
         }
@@ -99,8 +105,13 @@ namespace RentACar_1.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Handle invalid model state
-                return BadRequest(ModelState);
+                TempData["ErrorMessage"] = "Model State invalid";
+                return RedirectToAction("CarDetail", "Car", new
+                {
+                    carId = carId,
+                    fromDate = fromDate,
+                    toDate = toDate
+                }); // Redirect to the CarDetail action
             }
 
 
@@ -116,9 +127,13 @@ namespace RentACar_1.Controllers
             // Check if the car is available for the selected dates
             if (!IsCarAvailable(car, fromDate, toDate))
             {
-                // Handle car not available for booking
-                ModelState.AddModelError("", "Car is not available for the selected dates");
-                return BadRequest("Car is not available for the selected dates.");
+                TempData["ErrorMessage"] = "Car is not available for the selected dates.";
+                return RedirectToAction("CarDetail", "Car", new
+                {
+                    carId = carId,
+                    fromDate = fromDate,
+                    toDate = toDate
+                }); // Redirect to the CarDetail action
             }
 
             var currentUser = await _userManager.GetUserAsync(User);

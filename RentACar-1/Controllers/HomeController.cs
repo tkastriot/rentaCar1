@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using RentACar_1.Data;
 using RentACar_1.Models;
 using RentACar_1.ViewModels;
@@ -27,11 +28,50 @@ namespace RentACar_1.Controllers
 				BrandList = new SelectList(_dbContext.CarDetails.Select(cd => cd.Brand).Distinct()),
 				CategoryList = new SelectList(_dbContext.CarDetails.Select(cd => cd.Category).Distinct()),
 				CityList = new SelectList(_dbContext.CarDetails.Select(cd => cd.City).Distinct())
-			};
+            };
 
 			return View(viewModel);
 		}
-		public IActionResult Privacy()
+
+        [HttpPost]
+        public IActionResult NewestCars()
+        {
+            // Retrieve the 5 newest cars based on the Year property
+            var newestCars = _dbContext.Cars
+                .Include(c => c.CarDetail)
+                .OrderByDescending(c => c.CarDetail.Year)
+                .Take(5)
+                .ToList();
+
+            // Create a list to store CarDetailViewModel instances
+            var carViewModels = new List<CarDetailViewModel>();
+
+            // Iterate over each car and create a CarDetailViewModel instance
+            foreach (var car in newestCars)
+            {
+                var viewModel = new CarDetailViewModel
+                {
+                    Brand = car.CarDetail.Brand,
+                    Category = car.CarDetail.Category,
+                    City = car.CarDetail.City,
+                    Year = car.CarDetail.Year,
+                    IsAutomatic = car.CarDetail.IsAutomatic,
+                    FuelType = car.CarDetail.FuelType,
+                    Power = car.CarDetail.Power,
+                    PricePerDay = car.PricePerDay,
+                    CarId = car.CarID,
+                };
+
+                // Add the view model to the list
+                carViewModels.Add(viewModel);
+            }
+
+            // Pass the list of view models to the view
+            return View(carViewModels);
+        }
+ 
+
+        public IActionResult Privacy()
         {
             return View();
         }

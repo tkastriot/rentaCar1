@@ -1,188 +1,195 @@
 ﻿@model List<RentACar_1.ViewModels.OwnerCarsViewModel>
 
 <style>
-	.product {
-		margin-left: 30px;
-		padding: 20px;
-		width: 40%;
-		float: left;
-	}
+    .product {
+        margin-left: 30px;
+        padding: 20px;
+        width: 40%;
+        float: left;
+    }
 
-		.product img {
-			width: 200px;
-			float: left;
-			margin-right: 20px;
-		}
+        .product img {
+            width: 200px;
+            float: left;
+            margin-right: 20px;
+        }
 
-		.product h3 {
-			font-family: 'Roboto Condensed', sans-serif;
-			margin: 15px 0 0;
-			text-decoration: underline;
-		}
+        .product h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            margin: 15px 0 0;
+            text-decoration: underline;
+        }
 
-		.product p {
-			margin: 0;
-		}
+        .product p {
+            margin: 0;
+        }
 
-		.product .information {
-			line-height: 1em;
-			position: relative;
-			right: 3px;
-			margin-top: 20px;
-		}
+        .product .information {
+            line-height: 1em;
+            position: relative;
+            right: 3px;
+            margin-top: 20px;
+        }
 
-			.product .information td {
-				vertical-align: top;
-			}
+            .product .information td {
+                vertical-align: top;
+            }
 
-		.product .label {
-			font-weight: bold;
-			color: unset !important;
-		}
+        .product .label {
+            font-weight: bold;
+            color: unset !important;
+        }
 
-		.product .break {
-			padding-bottom: 20px;
-		}
+        .product .break {
+            padding-bottom: 20px;
+        }
 
-	.fadeOut {
-		opacity: 0;
-	}
+    .fadeOut {
+        opacity: 0;
+    }
 
-	.fadeIn {
-		opacity: 1;
-	}
+    .fadeIn {
+        opacity: 1;
+    }
 
-	.booking-schedule {
-		float: right;
-		background-color: #EEE;
-		width: 60%;
-		padding: 60px 80px 46px;
-	}
+    .booking-schedule {
+        float: right;
+        background-color: #EEE;
+        width: 60%;
+        padding: 60px 80px 46px;
+    }
 
-	.car-booking-wrapper {
-		display: inline-flex;
-	}
+    .car-booking-wrapper {
+        width: 100%;
+        display: inline-flex;
+    }
 
-	.car-buttons {
-		padding: 20px;
-		float: right;
-	}
+    .car-buttons {
+        padding: 20px;
+        float: right;
+    }
 
-	.car-buttons .btn, .car-buttons a {
-		width: fit-content;
-		height: 50px !important;
-		font-size: 14px !important;
-		color: #fff;
-		text-align: center !important;
-		justify-content: center !important;
-	}
+    .car-buttons .btn, .car-buttons a {
+        width: fit-content;
+        font-size: 14px !important;
+        color: #fff;
+        text-align: center !important;
+        justify-content: center !important;
+    }
 
-	
+    .modal-buttons{
+        width: fit-content;
+        font-size: 14px !important;
+        color: unset;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 70% !important;
+    }
 </style>
+
 @if (TempData["ErrorMessage"] != null)
 {
-	<div class="alert alert-danger" role="alert">
-		@TempData["ErrorMessage"]
-	</div>
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
 }
 
 <div class="container">
-	@if (Model.Any())
-	{
-		@foreach (var car in Model)
-		{
-			<div>
-				<div class="car-booking-wrapper">
-					<div class="product">
-						<img src="https://image.rakuten.co.jp/footmonkey/cabinet/newbalance/nb-wl555-sj-1.jpg" alt="Car Image">
-						<h3>@car.Brand - @car.Category</h3>
-						<p>Price Per Day: $@car.PricePerDay</p>
+    @if (Model.Any())
+    {
+        @foreach (var car in Model)
+        {
+            <div>
+                <div class="car-booking-wrapper">
+                    <div class="product">
+                        <img src="https://image.rakuten.co.jp/footmonkey/cabinet/newbalance/nb-wl555-sj-1.jpg" alt="Car Image">
+                        <h3>@car.Brand - @car.Category</h3>
+                        <p>Price Per Day: $@car.PricePerDay</p>
 
-						<table class="information">
-							<tr>
-								<td class="label">Year:</td>
-								<td>@car.Year</td>
-							</tr>
-							<tr>
-								<td class="label break">Is Automatic:</td>
-								<td>@car.IsAutomatic</td>
-							</tr>
-							<tr>
-								<td class="label break">Fuel Type:</td>
-								<td>@car.FuelType</td>
-							</tr>
-							<tr>
-								<td class="label break">Power KW</td>
-								<td>@car.Power KW</td>
-							</tr>
-							<tr>
-								<td class="label break">City</td>
-								<td>@car.City</td>
-							</tr>
-						</table>
-					</div>
+                        <div class="car-info">
+                            <p class="info-deatils"><i class="fas fa-map-marker-alt"></i> City: @car?.City</p>
+                            <p class="info-deatils"><i class="fas fa-calendar-alt"></i> Year: @car?.Year</p>
+                            <p class="info-deatils"><i class="fas fa-cogs"></i> @(car?.IsAutomatic ?? false ? "Automatic" : "Manual")</p>
+                            <p class="info-deatils"><i class="fas fa-gas-pump"></i> Fuel Type: @car?.FuelType</p>
+                            <p class="info-deatils"><i class="fas fa-bolt"></i> Power: @car?.Power KW</p>
+                        </div>
+                    </div>
 
-					<div class="booking-schedule">
-						<h3>Booking Schedule:</h3>
-						@if (car.BookingSchedule.Any())
-						{
-							<ul>
-								@foreach (var booking in car.BookingSchedule)
-								{
-									<li>From: @booking.FromDate - To: @booking.ToDate</li>
-								}
-							</ul>
-						}
-						else
-						{
-							<p>No bookings scheduled for this car.</p>
-						}
-					</div>
-				</div>
-				<!-- Edit car button -->
-				<div class="car-buttons">
-					<button class="btn btn-primary rounded-0 py-2 px-4">
-						<a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">Edit Car</a>
-					</button>
+                    <div class="booking-schedule">
+                        <h3>Booking Schedule:</h3>
+                        @if (car.BookingSchedule.Any())
+                        {
+                            <ul>
+                                @foreach (var booking in car.BookingSchedule)
+                                {
+                                    <li>From: @booking.FromDate - To: @booking.ToDate</li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <p>No bookings scheduled for this car.</p>
+                        }
+                    </div>
+                </div>
+                <!-- Edit car button -->
+                <div class="car-buttons">
+                    <button class="btn btn-primary rounded-0 py-2 px-4">
+                        <a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">  <i class="fas fa-edit"></i>Edit Car</a>
 
-					<!-- Delete car button -->
-					<button onclick="showConfirmation('@car.CarId')" class="btn btn-danger rounded-0 py-2 px-4">Delete Car</button>
-				</div>
-			</div>
+                    </button>
 
-		}
-	}
-	else
-	{
-		<p>No cars found.</p>
-	}
+                    <!-- Delete car button -->
+                    <button onclick="showConfirmation('@car.CarId')" class="btn btn-danger rounded-0 py-2 px-4">
+                        <i class="fas fa-trash"></i> Delete Car
+                    </button>
+                </div>
+            </div>
 
-	<!-- Confirmation modal -->
-	<div id="confirmationModal" class="modal">
-		<div class="modal-content">
-			<p>Are you sure you want to remove this car?</p>
-			<div class="modal-buttons">
-				<form id="deleteCarForm" asp-controller="Car" asp-action="DeleteCar" method="post">
-					<input type="hidden" id="carIdInput" name="carId" value="" />
-					<button type="submit">Yes</button>
-				</form>
-				<button onclick="hideConfirmation()">No</button>
-			</div>
-		</div>
-	</div>
+        }
+    }
+    else
+    {
+        <div class="col">
+            <p>No cars found.</p>
+        </div>
+    }
+</div>
+
+<!-- Confirmation modal -->
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <p>Are you sure you want to remove this car?</p>
+        <div class="modal-buttons">
+            <form id="deleteCarForm" asp-controller="Car" asp-action="DeleteCar" method="post">
+                <input type="hidden" id="carIdInput" name="carId" value="" />
+                <button type="submit"><i class="fas fa-check"></i> Yes</button>
+            </form>
+            <button onclick="hideConfirmation()"><i class="fas fa-times"></i> No</button>
+        </div>
+    </div>
 </div>
 
 <script>
-	function showConfirmation(carId) {
-		var modal = document.getElementById('confirmationModal');
-		var carIdInput = document.getElementById('carIdInput');
-		carIdInput.value = carId;
-		modal.style.display = 'block';
-	}
+    function showConfirmation(carId) {
+        var modal = document.getElementById('confirmationModal');
+        var carIdInput = document.getElementById('carIdInput');
+        carIdInput.value = carId;
+        modal.style.display = 'block';
+    }
 
-	function hideConfirmation() {
-		var modal = document.getElementById('confirmationModal');
-		modal.style.display = 'none';
-	}
+    function hideConfirmation() {
+        var modal = document.getElementById('confirmationModal');
+        modal.style.display = 'none';
+    }
 </script>
-</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
