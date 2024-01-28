@@ -1,0 +1,55 @@
+﻿@model List<RentACar_1.ViewModels.OwnerCarsViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cars</title>
+    <!-- Add any necessary CSS or meta tags here -->
+</head>
+<body>
+    <h1>My Cars</h1>
+    <div>
+        @if (Model.Any())
+        {
+            @foreach (var car in Model)
+            {
+                <div>
+                    <h2>@car.Brand - @car.Category</h2>
+                    <p>Year: @car.Year</p>
+                    <p>Description: @car.Description</p>
+                    <p>Is Automatic: @car.IsAutomatic</p>
+                    <p>Fuel Type: @car.FuelType</p>
+                    <p>Power: @car.Power KW</p>
+                    <p>City: @car.City</p>
+                    <p>Registration Number: @car.RegistrationNumber</p>
+                    <p>Price Per Day: $@car.PricePerDay</p>
+                   
+               <!--
+                  <button>
+                        <a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">Edit Car</a>
+                         </button>   -->
+
+                    <h3>Booking Schedule:</h3>
+                    @if (car.BookingSchedule.Any())
+                    {
+                        <ul>
+                            @foreach (var booking in car.BookingSchedule)
+                            {
+                                <li>From: @booking.FromDate - To: @booking.ToDate</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>No bookings scheduled for this car.</p>
+                    }
+                </div>
+            }
+        }
+        else
+        {
+            <p>No cars found.</p>
+        }
+    </div>
+</body>
+</html>

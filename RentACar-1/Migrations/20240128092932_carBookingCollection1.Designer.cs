@@ -3,17 +3,20 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentACar_1.Data;
 
 #nullable disable
 
-namespace RentACar_1.Data.Migrations
+namespace RentACar_1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240128092932_carBookingCollection1")]
+    partial class carBookingCollection1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -247,8 +250,9 @@ namespace RentACar_1.Data.Migrations
                     b.Property<DateTime>("FromDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RenterID")
-                        .HasColumnType("int");
+                    b.Property<string>("RenterID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
@@ -256,6 +260,8 @@ namespace RentACar_1.Data.Migrations
                     b.HasKey("BookingID");
 
                     b.HasIndex("CarID");
+
+                    b.HasIndex("RenterID");
 
                     b.ToTable("Bookings");
                 });
@@ -274,8 +280,9 @@ namespace RentACar_1.Data.Migrations
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
-                    b.Property<int>("OwnerID")
-                        .HasColumnType("int");
+                    b.Property<string>("OwnerID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("PricePerDay")
                         .HasColumnType("decimal(18,2)");
@@ -287,6 +294,8 @@ namespace RentACar_1.Data.Migrations
                     b.HasKey("CarID");
 
                     b.HasIndex("CarDetailID");
+
+                    b.HasIndex("OwnerID");
 
                     b.ToTable("Cars");
                 });
@@ -407,11 +416,21 @@ namespace RentACar_1.Data.Migrations
 
             modelBuilder.Entity("RentACar_1.Models.Booking", b =>
                 {
-                    b.HasOne("RentACar_1.Models.Car", null)
+                    b.HasOne("RentACar_1.Models.Car", "Car")
                         .WithMany("Bookings")
                         .HasForeignKey("CarID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("RentACar_1.Data.ApplicationUser", "Renter")
+                        .WithMany()
+                        .HasForeignKey("RenterID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("Renter");
                 });
 
             modelBuilder.Entity("RentACar_1.Models.Car", b =>
@@ -422,7 +441,15 @@ namespace RentACar_1.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RentACar_1.Data.ApplicationUser", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CarDetail");
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("RentACar_1.Models.Car", b =>

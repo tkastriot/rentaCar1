@@ -149,13 +149,17 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Apply Filters</button>
+
+
         }
+
+
 
         @if (Model.Cars.Any())
         {
             @foreach (var car in Model.Cars)
             {
-                 <a href="@Url.Action("CarDetail", "Car", new { carId = car.CarID })">
+                <a href="@Url.Action("CarDetail", "Car", new { carId = car.CarID, fromDate= Model.Filters.FromDate, toDate= Model.Filters.ToDate })">
                 <div class="car-item">
                     <div class="car-image">
                         <img src="@car.CarDetail?.ImageUrl" alt="Car Image" class="img-fluid">

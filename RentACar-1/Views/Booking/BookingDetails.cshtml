@@ -1,0 +1,59 @@
+﻿@model RentACar_1.Models.Booking
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Detail</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #007bff;
+        }
+
+        p {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Booking Detail</h1>
+        <div>
+            <h2>Booking ID: @Model.BookingID</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Car Details</h3>
+                    <p><strong>Brand:</strong> @Model.Car.CarDetail.Brand</p>
+                    <p><strong>Category:</strong> @Model.Car.CarDetail.Category</p>
+                    <!-- Add more car details as needed -->
+                </div>
+                <div class="col-md-6">
+                    <h3>Renter Details</h3>
+                    <p><strong>Name:</strong> @Model.Renter.FirstName</p>
+                    <p><strong>Email:</strong> @Model.Renter.Email</p>
+                    <!-- Add more renter details as needed -->
+                </div>
+            </div>
+            <h3 class="mt-4">Booking Dates</h3>
+            <p><strong>From:</strong> @Model.FromDate.ToShortDateString()</p>
+            <p><strong>To:</strong> @Model.ToDate.ToShortDateString()</p>
+            <!-- Add more owner details as needed -->
+        </div>
+    </div>
+</body>
+</html>

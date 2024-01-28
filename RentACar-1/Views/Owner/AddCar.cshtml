@@ -1,0 +1,83 @@
+﻿@model RentACar_1.ViewModels.AddCarViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Car</title>
+    <!-- Add any necessary CSS or meta tags here -->
+</head>
+<body>
+    <h1>Add New Car</h1>
+    <div>
+        @using (Html.BeginForm("AddCar", "Owner", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label for="Brand">Brand:</label>
+                @Html.TextBoxFor(m => m.Brand, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Brand, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Category">Category:</label>
+                @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Category, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Year">Year:</label>
+                @Html.TextBoxFor(m => m.Year, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", rows = "4" })
+                @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="IsAutomatic">Is Automatic:</label>
+                <div>
+                    @Html.RadioButtonFor(m => m.IsAutomatic, true) Yes
+                    @Html.RadioButtonFor(m => m.IsAutomatic, false) No
+                </div>
+                @Html.ValidationMessageFor(m => m.IsAutomatic, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="FuelType">Fuel Type:</label>
+                @Html.TextBoxFor(m => m.FuelType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FuelType, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="Power">Power (KW):</label>
+                @Html.TextBoxFor(m => m.Power, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Power, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="PricePerDay">Price For Day:</label>
+                @Html.TextBoxFor(m => m.PricePerDay, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PricePerDay, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="RegistrationNumber">Registration Number:</label>
+                @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegistrationNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="City">City:</label>
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Car</button>
+        }
+    </div>
+</body>
+</html>

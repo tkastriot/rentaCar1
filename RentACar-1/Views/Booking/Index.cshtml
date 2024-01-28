@@ -1,0 +1,28 @@
+﻿@model RentACar_1.Models.Booking
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Detail</title>
+    <!-- Add any necessary CSS or meta tags here -->
+</head>
+<body>
+    <h1>Booking Detail</h1>
+    <div>
+        <h2>Booking ID: @Model.BookingID</h2>
+        <h3>Car Details</h3>
+        <p>Brand: @Model.Car.CarDetail.Brand</p>
+        <p>Category: @Model.Car.CarDetail.Category</p>
+        <!-- Add more car details as needed -->
+
+        <h3>Renter Details</h3>
+        <p>Name: @Model.Renter.UserName</p>
+        <p>Email: @Model.Renter.Email</p>
+        <!-- Add more renter details as needed -->
+
+        <h3>Booking Dates</h3>
+        <p>From: @Model.FromDate.ToShortDateString()</p>
+        <p>To: @Model.ToDate.ToShortDateString()</p>
+    </div>
+</body>
+</html>
