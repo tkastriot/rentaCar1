@@ -174,7 +174,14 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
     font-size: 8px;
     margin-left: 15px;
 }
-.wrap-sticky nav.navbar.bootsnav.sticked ul.nav > li > a{padding:30px 25px;}
+.navbar-nav {
+    display: inline-flex !important;
+    flex-direction: row !
+}
+
+.wrap-sticky nav.navbar.bootsnav.sticked ul.nav > li > a {
+    padding: 30px 25px;
+}
 /*.nav li*/
 
 /*.menu-ui-design*/
@@ -266,7 +273,6 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     padding: 40px 0;
     background: #fff;
     box-shadow:0 10px 40px 0px rgba(38,40,64,.2);
-    position: absolute;
     bottom: -150px;
     width: 100%;
     border-radius: 3px;

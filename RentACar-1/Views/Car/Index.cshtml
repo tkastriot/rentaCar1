@@ -1,19 +1,6 @@
 ﻿@model RentACar_1.ViewModels.CarIndexViewModel
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+<style>
         .car-container {
             margin: 20px auto;
             background-color: #fff;
@@ -117,44 +104,12 @@
         }
 
     </style>
-    <title>Rent A Car</title>
-</head>
 
-<body>
+<div class="container">
+        @Html.Partial("FilterCars.cshtml")
 
     <div class="car-container">
         <h2 class="text-center">Rent A Car</h2>
-
-        @using (Html.BeginForm("FilterCars", "Car", FormMethod.Post, new { @class = "mb-4" }))
-        {
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    @Html.DropDownListFor(m => m.Filters.Brand, Model.BrandList, "Select Brand", new { @class = "form-control" })
-                </div>
-                <div class="form-group col-md-4">
-                    @Html.DropDownListFor(m => m.Filters.Category, Model.CategoryList, "Select Category", new { @class = "form-control" })
-                </div>
-                <div class="form-group col-md-4">
-                    @Html.DropDownListFor(m => m.Filters.City, Model.CityList, "Select City", new { @class = "form-control" })
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    @Html.TextBoxFor(m => m.Filters.FromDate, new { type = "date", @class = "form-control" })
-                </div>
-                <div class="form-group col-md-6">
-                    @Html.TextBoxFor(m => m.Filters.ToDate, new { type = "date", @class = "form-control" })
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Apply Filters</button>
-
-
-        }
-
-
-
         @if (Model.Cars.Any())
         {
             @foreach (var car in Model.Cars)
@@ -187,10 +142,4 @@
             <p class="no-cars">No cars match the selected criteria.</p>
         }
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-</body>
-
-</html>
+</div>

@@ -93,3 +93,7 @@
 	
 }/*max-width:320px*/
 
+
+.navbar-nav {
+	display: inline;
+}
