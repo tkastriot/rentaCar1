@@ -71,8 +71,7 @@
         .page-container {
             width: 100% !important;
             padding: 0 !important;
-            margin: auto !important;
-            margin-top: 100px !important
+            margin-top: 135px !important
         }
 
         .wrap-sticky nav.navbar.bootsnav {
@@ -90,7 +89,7 @@
             <div class="top-area">
                 <div class="header-area">
                     <!-- Start Navigation -->
-                    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+                    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" style="background-color: #000" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
 
                         <div class="container">
 
@@ -104,8 +103,8 @@
                             </div><!--/.navbar-header-->
                             <!-- End Header Navigation -->
                             <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-                                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                            <div class="collapse navbar-collapse menu-ui-design background-black" style="background-color: #000" id="navbar-menu">
+                                <ul class="nav navbar-nav navbar-right" style="background-color: #000" data-in="fadeInDown" data-out="fadeOutUp">
                                     <li>
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">Car</a>
                                     </li>
@@ -115,7 +114,6 @@
                                     <li>
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="MyCars">My Cars</a>
                                     </li>
-                                    <li class="scroll"><a href="#contact">contact</a></li>
 
                                     <partial name="_LoginPartial" />
                                 </ul><!--/.nav -->

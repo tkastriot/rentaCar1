@@ -17,6 +17,11 @@
 
 @using (Html.BeginForm("FilterCars", "Car", FormMethod.Post, new { @class = "mb-4" }))
 {
+	var yesNoList = new SelectList(new[]
+{
+	new { Value = "Yes", Text = "Yes" },
+	new { Value = "No", Text = "No" }
+}, "Value", "Text");
 <div class="filters-container">
 <div class="container">
 	<div class="row">
@@ -46,19 +51,12 @@
 								</div><!-- /.model-select-icon -->
 							</div>
 						<div class="single-model-search">
-							<h2>car condition</h2>
+							<h2>Is Automatic</h2>
 							<div class="model-select-icon">
-										@Html.DropDownListFor(m => m.Filters.IsAutomatic, yesNoList, "Select Category", new { @class = "form-control" })
+										@Html.DropDownListFor(m => m.Filters.IsAutomatic, yesNoList, "Select isAutomatic", new { @class = "form-control" })
 
-									<option value="default">condition</option><!-- /.option-->
 
-									<option value="something">something</option><!-- /.option-->
-
-									<option value="something">something</option><!-- /.option-->
-									<option value="something">something</option><!-- /.option-->
-
-								</select><!-- /.select-->
-							</div><!-- /.model-select-icon -->
+									</div><!-- /.model-select-icon -->
 						</div>
 					</div>
 					<div class="col-md-offset-1 col-md-2 col-sm-12">

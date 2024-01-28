@@ -9,5 +9,5 @@ namespace RentACar_1.ViewModels
 		public SelectList BrandList { get; set; }
 		public SelectList CategoryList { get; set; }
 		public SelectList CityList { get; set; }
-	}
+    }
 }
