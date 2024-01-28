@@ -5,10 +5,43 @@
 <head>
     <title>My Cars</title>
     <!-- Add any necessary CSS or meta tags here -->
+    <style>
+        /* Add CSS styles for the confirmation modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .modal-buttons {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
     <h1>My Cars</h1>
     <div>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["ErrorMessage"]
+            </div>
+        }
         @if (Model.Any())
         {
             @foreach (var car in Model)
@@ -23,11 +56,14 @@
                     <p>City: @car.City</p>
                     <p>Registration Number: @car.RegistrationNumber</p>
                     <p>Price Per Day: $@car.PricePerDay</p>
-                   
-               <!--
-                  <button>
+
+                    <!-- Edit car button -->
+                    <button>
                         <a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">Edit Car</a>
-                         </button>   -->
+                    </button>
+
+                    <!-- Delete car button -->
+                    <button onclick="showConfirmation('@car.CarId')">Delete Car</button>
 
                     <h3>Booking Schedule:</h3>
                     @if (car.BookingSchedule.Any())
@@ -51,5 +87,33 @@
             <p>No cars found.</p>
         }
     </div>
+
+    <!-- Confirmation modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <p>Are you sure you want to remove this car?</p>
+            <div class="modal-buttons">
+                <form id="deleteCarForm" asp-controller="Car" asp-action="DeleteCar" method="post">
+                    <input type="hidden" id="carIdInput" name="carId" value="" />
+                    <button type="submit">Yes</button>
+                </form>
+                <button onclick="hideConfirmation()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showConfirmation(carId) {
+            var modal = document.getElementById('confirmationModal');
+            var carIdInput = document.getElementById('carIdInput');
+            carIdInput.value = carId;
+            modal.style.display = 'block';
+        }
+
+        function hideConfirmation() {
+            var modal = document.getElementById('confirmationModal');
+            modal.style.display = 'none';
+        }
+    </script>
 </body>
 </html>

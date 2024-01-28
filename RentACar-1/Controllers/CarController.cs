@@ -63,7 +63,7 @@ namespace RentACar_1.Controllers
 
             return cars;
         }
-        public IActionResult CarDetail(int carId, string? fromDate, string? toDate )
+        public IActionResult CarDetail(int carId, string? fromDate, string? toDate)
         {
             // Retrieve the car details from the database based on the carId
             var carData = _dbContext.Cars
@@ -157,7 +157,77 @@ namespace RentACar_1.Controllers
                                                 (toDate >= b.FromDate && toDate <= b.ToDate)));
         }
 
+
+
+        public IActionResult EditCar(int id)
+        {
+            var car = _dbContext.Cars
+                .Include(c => c.CarDetail)
+                .FirstOrDefault(c => c.CarID == id);
+
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new EditCarViewModel
+            {
+                CarId = car.CarID,
+                Brand = car.CarDetail?.Brand,
+                Category = car.CarDetail?.Category,
+                Year = car.CarDetail?.Year ?? 0,
+                Description = car.CarDetail?.Description,
+                IsAutomatic = car.CarDetail?.IsAutomatic ?? false,
+                FuelType = car.CarDetail?.FuelType,
+                Power = car.CarDetail?.Power ?? 0,
+                City = car.CarDetail?.City,
+                RegistrationNumber = car.RegistrationNumber,
+                PricePerDay = car.PricePerDay
+            };
+
+            return View(viewModel);
+        }
+
+        // POST: Car/EditCar/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditCar(int id, EditCarViewModel viewModel)
+        {
+            if (id != viewModel.CarId)
+            {
+                return BadRequest();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var car = await _dbContext.Cars
+                    .Include(c => c.CarDetail)
+                    .FirstOrDefaultAsync(c => c.CarID == id);
+
+                if (car == null)
+                {
+                    return NotFound();
+                }
+
+                car.CarDetail.Brand = viewModel.Brand;
+                car.CarDetail.Category = viewModel.Category;
+                car.CarDetail.Year = viewModel.Year;
+                car.CarDetail.Description = viewModel.Description ?? "";
+                car.CarDetail.IsAutomatic = viewModel.IsAutomatic;
+                car.CarDetail.FuelType = viewModel.FuelType;
+                car.CarDetail.Power = viewModel.Power;
+                car.CarDetail.City = viewModel.City;
+                car.RegistrationNumber = viewModel.RegistrationNumber;
+                car.PricePerDay = viewModel.PricePerDay;
+
+                _dbContext.Update(car);
+                await _dbContext.SaveChangesAsync();
+
+                return RedirectToAction("MyCars");
+            }
+
+            return View(viewModel);
+        }
+
     }
-
-
 }
