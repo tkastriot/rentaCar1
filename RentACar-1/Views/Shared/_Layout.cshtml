@@ -53,19 +53,20 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-	  <style>
-		//.navbar-nav {
-			//display: flex;
-			//flex-direction: row !important;
-		//}
+    <style>
+        //.navbar-nav {
+            //display: flex;
+            //flex-direction: row !important;
+            //
+        }
 
-        .navbar .container { 
+        .navbar .container {
             flex-wrap: nowrap !important;
         }
 
-		.nav.navbar.bootsnav{ 
-			background: black !important;
-		}
+        .nav.navbar.bootsnav {
+            background: black !important;
+        }
 
         .page-container {
             width: 100% !important;
@@ -78,57 +79,87 @@
             background-color: #000 !important;
             box-shadow: 0 2px 5px rgba(0,0,0,.2) !important
         }
-	</style>
+    </style>
 </head>
 <body>
     <div class="container-all">
-	<!--welcome-hero start -->
-	<section id="home" class="welcome-hero">
+        <!--welcome-hero start -->
+        <section id="home" class="welcome-hero">
 
-		<!-- top-area Start -->
-		<div class="top-area">
-			<div class="header-area">
-				<!-- Start Navigation -->
-				<nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+            <!-- top-area Start -->
+            <div class="top-area">
+                <div class="header-area">
+                    <!-- Start Navigation -->
+                    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
 
-					<div class="container">
+                        <div class="container">
 
-						<!-- Start Header Navigation -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-								<i class="fa fa-bars"></i>
-							</button>
-							<a class="navbar-brand" href="index.html">carvilla<span></span></a>
+                            <!-- Start Header Navigation -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Rent a Car</a>
 
-						</div><!--/.navbar-header-->
-						<!-- End Header Navigation -->
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-							<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-								<li class=" scroll active"><a href="#home">home</a></li>
-								<li class="scroll"><a href="#service">service</a></li>
-								<li class="scroll"><a href="#featured-cars">featured cars</a></li>
-								<li class="scroll"><a href="#new-cars">new cars</a></li>
-								<li class="scroll"><a href="#brand">brands</a></li>
-								<li class="scroll"><a href="#contact">contact</a></li>
-							</ul><!--/.nav -->
-						</div><!-- /.navbar-collapse -->
-					</div><!--/.container-->
-				</nav><!--/nav-->
-				<!-- End Navigation -->
-			</div><!--/.header-area-->
-			<div class="clearfix"></div>
+                            </div><!--/.navbar-header-->
+                            <!-- End Header Navigation -->
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">Car</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="AddCar">Add Car</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="MyCars">My Cars</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                    </li>
+                                    <li class="scroll"><a href="#contact">contact</a></li>
+                                </ul><!--/.nav -->
+                            </div><!-- /.navbar-collapse -->
+                            <!--    <div class="container-fluid">
+                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RentACar_1</a>
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                        aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                                    <ul class="navbar-nav flex-grow-1">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">Car</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="AddCar">Add Car</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="MyCars">My Cars</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                        </li>
+                                    </ul>
+                                    <partial name="_LoginPartial" />
+                                </div> -->
+                        </div><!--/.container-->
+                    </nav><!--/nav-->
+                    <!-- End Navigation -->
+                </div><!--/.header-area-->
+                <div class="clearfix"></div>
 
-		</div><!-- /.top-area-->
-		<!-- top-area End -->
+            </div><!-- /.top-area-->
+            <!-- top-area End -->
 
-	</section>
+        </section>
 
-    <div class="page-container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <div class="page-container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
     </div>
     </footer><!--/.contact-->
     <!--contact end-->
