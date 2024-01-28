@@ -1,193 +1,188 @@
 ﻿@model List<RentACar_1.ViewModels.OwnerCarsViewModel>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cars</title>
-    <!-- Add any necessary CSS or meta tags here -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet">
-    <style>
-        /* General Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
+<style>
+	.product {
+		margin-left: 30px;
+		padding: 20px;
+		width: 40%;
+		float: left;
+	}
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+		.product img {
+			width: 200px;
+			float: left;
+			margin-right: 20px;
+		}
 
-        /* Car Styles */
-        .car {
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin-bottom: 20px;
-        }
+		.product h3 {
+			font-family: 'Roboto Condensed', sans-serif;
+			margin: 15px 0 0;
+			text-decoration: underline;
+		}
 
-            .car h2 {
-                color: #333;
-                margin-top: 0;
-            }
+		.product p {
+			margin: 0;
+		}
 
-            .car p {
-                margin: 5px 0;
-            }
+		.product .information {
+			line-height: 1em;
+			position: relative;
+			right: 3px;
+			margin-top: 20px;
+		}
 
-        .car-buttons {
-            margin-top: 10px;
-        }
+			.product .information td {
+				vertical-align: top;
+			}
 
-            .car-buttons button {
-                margin-right: 10px;
-                padding: 8px 15px;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                background-color: #007bff;
-                color: #fff;
-            }
+		.product .label {
+			font-weight: bold;
+			color: unset !important;
+		}
 
-                .car-buttons button:hover {
-                    background-color: #0056b3;
-                }
+		.product .break {
+			padding-bottom: 20px;
+		}
 
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
+	.fadeOut {
+		opacity: 0;
+	}
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 5px;
-            width: 80%;
-        }
+	.fadeIn {
+		opacity: 1;
+	}
 
-        .modal-buttons {
-            text-align: right;
-            margin-top: 10px;
-        }
+	.booking-schedule {
+		float: right;
+		background-color: #EEE;
+		width: 60%;
+		padding: 60px 80px 46px;
+	}
 
-            .modal-buttons button {
-                margin-left: 10px;
-                padding: 8px 15px;
-                border: none;
-                border-radius: 3px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                background-color: #007bff;
-                color: #fff;
-            }
+	.car-booking-wrapper {
+		display: inline-flex;
+	}
 
-                .modal-buttons button:hover {
-                    background-color: #0056b3;
-                }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>My Cars</h1>
-        <div>
-            @if (TempData["ErrorMessage"] != null)
-            {
-                <div class="alert alert-danger" role="alert">
-                    @TempData["ErrorMessage"]
-                </div>
-            }
-            @if (Model.Any())
-            {
-                @foreach (var car in Model)
-                {
-                    <div class="car">
-                        <h2>@car.Brand - @car.Category</h2>
-                        <p>Year: @car.Year</p>
-                        <p>Description: @car.Description</p>
-                        <p>Is Automatic: @car.IsAutomatic</p>
-                        <p>Fuel Type: @car.FuelType</p>
-                        <p>Power: @car.Power KW</p>
-                        <p>City: @car.City</p>
-                        <p>Registration Number: @car.RegistrationNumber</p>
-                        <p>Price Per Day: $@car.PricePerDay</p>
+	.car-buttons {
+		padding: 20px;
+		float: right;
+	}
 
-                        <!-- Edit car button -->
-                        <div class="car-buttons">
-                            <button>
-                                <a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">Edit Car</a>
-                            </button>
+	.car-buttons .btn, .car-buttons a {
+		width: fit-content;
+		height: 50px !important;
+		font-size: 14px !important;
+		color: #fff;
+		text-align: center !important;
+		justify-content: center !important;
+	}
 
-                            <!-- Delete car button -->
-                            <button onclick="showConfirmation('@car.CarId')">Delete Car</button>
-                        </div>
+	
+</style>
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-danger" role="alert">
+		@TempData["ErrorMessage"]
+	</div>
+}
 
-                        <h3>Booking Schedule:</h3>
-                        @if (car.BookingSchedule.Any())
-                        {
-                            <ul>
-                                @foreach (var booking in car.BookingSchedule)
-                                {
-                                    <li>From: @booking.FromDate - To: @booking.ToDate</li>
-                                }
-                            </ul>
-                        }
-                        else
-                        {
-                            <p>No bookings scheduled for this car.</p>
-                        }
-                    </div>
-                }
-            }
-            else
-            {
-                <p>No cars found.</p>
-            }
-        </div>
-    </div>
+<div class="container">
+	@if (Model.Any())
+	{
+		@foreach (var car in Model)
+		{
+			<div>
+				<div class="car-booking-wrapper">
+					<div class="product">
+						<img src="https://image.rakuten.co.jp/footmonkey/cabinet/newbalance/nb-wl555-sj-1.jpg" alt="Car Image">
+						<h3>@car.Brand - @car.Category</h3>
+						<p>Price Per Day: $@car.PricePerDay</p>
 
-    <!-- Confirmation modal -->
-    <div id="confirmationModal" class="modal">
-        <div class="modal-content">
-            <p>Are you sure you want to remove this car?</p>
-            <div class="modal-buttons">
-                <form id="deleteCarForm" asp-controller="Car" asp-action="DeleteCar" method="post">
-                    <input type="hidden" id="carIdInput" name="carId" value="" />
-                    <button type="submit">Yes</button>
-                </form>
-                <button onclick="hideConfirmation()">No</button>
-            </div>
-        </div>
-    </div>
+						<table class="information">
+							<tr>
+								<td class="label">Year:</td>
+								<td>@car.Year</td>
+							</tr>
+							<tr>
+								<td class="label break">Is Automatic:</td>
+								<td>@car.IsAutomatic</td>
+							</tr>
+							<tr>
+								<td class="label break">Fuel Type:</td>
+								<td>@car.FuelType</td>
+							</tr>
+							<tr>
+								<td class="label break">Power KW</td>
+								<td>@car.Power KW</td>
+							</tr>
+							<tr>
+								<td class="label break">City</td>
+								<td>@car.City</td>
+							</tr>
+						</table>
+					</div>
 
-    <script>
-        function showConfirmation(carId) {
-            var modal = document.getElementById('confirmationModal');
-            var carIdInput = document.getElementById('carIdInput');
-            carIdInput.value = carId;
-            modal.style.display = 'block';
-        }
+					<div class="booking-schedule">
+						<h3>Booking Schedule:</h3>
+						@if (car.BookingSchedule.Any())
+						{
+							<ul>
+								@foreach (var booking in car.BookingSchedule)
+								{
+									<li>From: @booking.FromDate - To: @booking.ToDate</li>
+								}
+							</ul>
+						}
+						else
+						{
+							<p>No bookings scheduled for this car.</p>
+						}
+					</div>
+				</div>
+				<!-- Edit car button -->
+				<div class="car-buttons">
+					<button class="btn btn-primary rounded-0 py-2 px-4">
+						<a asp-controller="Car" asp-action="EditCar" asp-route-id="@car.CarId">Edit Car</a>
+					</button>
 
-        function hideConfirmation() {
-            var modal = document.getElementById('confirmationModal');
-            modal.style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+					<!-- Delete car button -->
+					<button onclick="showConfirmation('@car.CarId')" class="btn btn-danger rounded-0 py-2 px-4">Delete Car</button>
+				</div>
+			</div>
+
+		}
+	}
+	else
+	{
+		<p>No cars found.</p>
+	}
+
+	<!-- Confirmation modal -->
+	<div id="confirmationModal" class="modal">
+		<div class="modal-content">
+			<p>Are you sure you want to remove this car?</p>
+			<div class="modal-buttons">
+				<form id="deleteCarForm" asp-controller="Car" asp-action="DeleteCar" method="post">
+					<input type="hidden" id="carIdInput" name="carId" value="" />
+					<button type="submit">Yes</button>
+				</form>
+				<button onclick="hideConfirmation()">No</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function showConfirmation(carId) {
+		var modal = document.getElementById('confirmationModal');
+		var carIdInput = document.getElementById('carIdInput');
+		carIdInput.value = carId;
+		modal.style.display = 'block';
+	}
+
+	function hideConfirmation() {
+		var modal = document.getElementById('confirmationModal');
+		modal.style.display = 'none';
+	}
+</script>
+</script>
