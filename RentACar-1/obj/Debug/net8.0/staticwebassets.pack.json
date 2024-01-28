@@ -5,6 +5,238 @@
       "PackagePath": "staticwebassets\\RentACar-1.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\animate.css",
+      "PackagePath": "staticwebassets\\assets\\css\\animate.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\bootsnav.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootsnav.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\flaticon.css",
+      "PackagePath": "staticwebassets\\assets\\css\\flaticon.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\linearicons.css",
+      "PackagePath": "staticwebassets\\assets\\css\\linearicons.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\owl.carousel.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.carousel.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\owl.theme.default.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\owl.theme.default.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\assets\\css\\responsive.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Flaticon.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Flaticon.eot"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Flaticon.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Flaticon.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Flaticon.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Flaticon.ttf"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Flaticon.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Flaticon.woff"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Linearicons-Free.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Linearicons-Free.eot"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Linearicons-Free.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Linearicons-Free.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Linearicons-Free.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Linearicons-Free.ttf"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Linearicons-Free.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Linearicons-Free.woff"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\Linearicons-Free.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Linearicons-Free.woff2"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.svg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\brand\\br1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\brand\\br1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\brand\\br2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\brand\\br2.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\brand\\br3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\brand\\br3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\brand\\br4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\brand\\br4.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\brand\\br5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\brand\\br5.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\brand\\br6.png",
+      "PackagePath": "staticwebassets\\assets\\images\\brand\\br6.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\clients\\c1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\clients\\c1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\clients\\c2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\clients\\c2.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\clients\\c3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\clients\\c3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc2.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc4.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc5.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc6.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc6.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc7.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc7.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\featured-cars\\fc8.png",
+      "PackagePath": "staticwebassets\\assets\\images\\featured-cars\\fc8.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\new-cars-model\\ncm1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\new-cars-model\\ncm1.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\new-cars-model\\ncm2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\new-cars-model\\ncm2.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\new-cars-model\\ncm3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\new-cars-model\\ncm3.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\images\\welcome-hero\\welcome-banner.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\welcome-hero\\welcome-banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\js\\bootsnav.js",
+      "PackagePath": "staticwebassets\\assets\\js\\bootsnav.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\js\\custom.js",
+      "PackagePath": "staticwebassets\\assets\\js\\custom.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\js\\feather.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\feather.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\js\\jquery.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\js\\owl.carousel.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\owl.carousel.min.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\assets\\logo\\favicon.png",
+      "PackagePath": "staticwebassets\\assets\\logo\\favicon.png"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\RentACar-1\\RentACar-1\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

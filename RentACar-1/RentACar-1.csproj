@@ -13,10 +13,76 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\css\animate.css" />
+    <None Include="wwwroot\assets\css\bootsnav.css" />
+    <None Include="wwwroot\assets\css\bootstrap.min.css" />
+    <None Include="wwwroot\assets\css\flaticon.css" />
+    <None Include="wwwroot\assets\css\font-awesome.min.css" />
+    <None Include="wwwroot\assets\css\linearicons.css" />
+    <None Include="wwwroot\assets\css\owl.carousel.min.css" />
+    <None Include="wwwroot\assets\css\owl.theme.default.min.css" />
+    <None Include="wwwroot\assets\css\responsive.css" />
+    <None Include="wwwroot\assets\css\style.css" />
+    <None Include="wwwroot\assets\fonts\Flaticon.eot" />
+    <None Include="wwwroot\assets\fonts\Flaticon.svg" />
+    <None Include="wwwroot\assets\fonts\Flaticon.ttf" />
+    <None Include="wwwroot\assets\fonts\Flaticon.woff" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.eot" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.svg" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.ttf" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.woff" />
+    <None Include="wwwroot\assets\fonts\Linearicons-Free.woff2" />
+    <None Include="wwwroot\assets\images\brand\br1.png" />
+    <None Include="wwwroot\assets\images\brand\br2.png" />
+    <None Include="wwwroot\assets\images\brand\br3.png" />
+    <None Include="wwwroot\assets\images\brand\br4.png" />
+    <None Include="wwwroot\assets\images\brand\br5.png" />
+    <None Include="wwwroot\assets\images\brand\br6.png" />
+    <None Include="wwwroot\assets\images\clients\c1.png" />
+    <None Include="wwwroot\assets\images\clients\c2.png" />
+    <None Include="wwwroot\assets\images\clients\c3.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc1.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc2.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc3.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc4.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc5.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc6.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc7.png" />
+    <None Include="wwwroot\assets\images\featured-cars\fc8.png" />
+    <None Include="wwwroot\assets\images\new-cars-model\ncm1.png" />
+    <None Include="wwwroot\assets\images\new-cars-model\ncm2.png" />
+    <None Include="wwwroot\assets\images\new-cars-model\ncm3.png" />
+    <None Include="wwwroot\assets\images\welcome-hero\welcome-banner.jpg" />
+    <None Include="wwwroot\assets\js\bootsnav.js" />
+    <None Include="wwwroot\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\js\custom.js" />
+    <None Include="wwwroot\assets\js\feather.min.js" />
+    <None Include="wwwroot\assets\js\jquery.js" />
+    <None Include="wwwroot\assets\js\owl.carousel.min.js" />
+    <None Include="wwwroot\assets\logo\favicon.png" />
   </ItemGroup>
 
 </Project>

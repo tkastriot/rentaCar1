@@ -53,7 +53,7 @@ public class OwnerController : Controller
                 FuelType = model.FuelType,
                 Power = model.Power,
                 City = model.City,
-          //      ImageUrl = model.ImageUrl //
+                ImageUrl = model.ImageUrl,
             };
 
             // Add CarDetails to DbContext
@@ -104,12 +104,10 @@ public class OwnerController : Controller
             City = car.CarDetail?.City ?? "Unknown City",
             RegistrationNumber = car.RegistrationNumber,
             PricePerDay = car.PricePerDay,
+            ImageUrl = car.CarDetail.ImageUrl,
             BookingSchedule = car.Bookings?
                 .Select(booking =>
                 {
-                    // Log or debug the FromDate and ToDate values for troubleshooting
-                    Console.WriteLine($"FromDate: {booking.FromDate}, ToDate: {booking.ToDate}");
-
                     return new BookingSchedule
                     {
                         FromDate = booking.FromDate,

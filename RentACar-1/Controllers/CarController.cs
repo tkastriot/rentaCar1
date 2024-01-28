@@ -96,6 +96,7 @@ namespace RentACar_1.Controllers
                 CarId = carData.CarID,
                 FromDate = fromDate,
                 ToDate = toDate,
+                ImageUrl= carData.CarDetail.ImageUrl,
             };
 
             return View(viewModel);
@@ -195,7 +196,8 @@ namespace RentACar_1.Controllers
                 Power = car.CarDetail?.Power ?? 0,
                 City = car.CarDetail?.City,
                 RegistrationNumber = car.RegistrationNumber,
-                PricePerDay = car.PricePerDay
+                PricePerDay = car.PricePerDay,
+                ImageUrl = car.CarDetail.ImageUrl,
             };
 
             return View(viewModel);
@@ -232,6 +234,7 @@ namespace RentACar_1.Controllers
                 car.CarDetail.City = viewModel.City;
                 car.RegistrationNumber = viewModel.RegistrationNumber;
                 car.PricePerDay = viewModel.PricePerDay;
+                car.CarDetail.ImageUrl = viewModel.ImageUrl;
 
                 _dbContext.Update(car);
                 await _dbContext.SaveChangesAsync();

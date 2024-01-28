@@ -30,5 +30,6 @@ namespace RentACar_1.ViewModels
 
         [Required(ErrorMessage = "Price per day is required")]
         public decimal PricePerDay { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

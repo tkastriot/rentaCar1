@@ -115,6 +115,14 @@
                             </div>
 
                             <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="registrationNumber" class="col-form-label">Image Url</label>
+                                    <input asp-for="ImageUrl" class="form-control" id="imageUrl" />
+                                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-12 form-group">
                                     <button type="submit" class="btn btn-primary rounded-0 py-2 px-4">Save</button>
                                     <span class="submitting"></span>

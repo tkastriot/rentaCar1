@@ -18,6 +18,7 @@ namespace RentACar_1.ViewModels
         public string City { get; set; }
         public string RegistrationNumber { get; set; }
         public decimal PricePerDay { get; set; }
+        public string? ImageUrl { get; set; }
         // public string OwnerID { get; set; }
         public List<BookingSchedule> BookingSchedule { get; set; }
     }

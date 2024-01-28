@@ -12,6 +12,6 @@
         public string City { get; set; }
         public string RegistrationNumber { get; set; }
         public decimal PricePerDay { get; set; }
-       // public string OwnerID { get; set; } // Assuming you'll pass the OwnerID
+        public string? ImageUrl { get; set; }
     }
 }

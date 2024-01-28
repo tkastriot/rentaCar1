@@ -65,10 +65,17 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: 500;
     text-transform: capitalize;
 }
+
+.nav.bootsnav {
+    background: black !important;
+}
+.background-black {
+    background: black !important;
+}
 p {
-	margin: 0;
-	color:#818998;
-	font-size:16px;
+    margin: 0;
+    color: #818998;
+    font-size: 16px;
     line-height: 1.8;
     text-transform: initial;
 }
