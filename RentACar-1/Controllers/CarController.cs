@@ -157,8 +157,6 @@ namespace RentACar_1.Controllers
                                                 (toDate >= b.FromDate && toDate <= b.ToDate)));
         }
 
-
-
         public IActionResult EditCar(int id)
         {
             var car = _dbContext.Cars
@@ -223,11 +221,39 @@ namespace RentACar_1.Controllers
                 _dbContext.Update(car);
                 await _dbContext.SaveChangesAsync();
 
-                return RedirectToAction("MyCars");
+                return RedirectToAction("MyCars", "Owner");
             }
 
             return View(viewModel);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteCar(int carId)
+        {
+            var car = await _dbContext.Cars
+                .Include(c => c.Bookings)
+                .FirstOrDefaultAsync(c => c.CarID == carId);
 
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the car has bookings for current or future dates
+            var currentDate = DateTime.Now.Date;
+            var isBooked = car.Bookings.Any(b => b.FromDate.Date <= currentDate && b.ToDate.Date >= currentDate || b.FromDate.Date > currentDate);
+
+            if (isBooked)
+            {
+                TempData["ErrorMessage"] = "This car cannot be deleted as there are bookings for future dates.";
+                return RedirectToAction("MyCars", "Owner"); // Redirect to the MyCars action
+            }
+
+            // Delete the car
+            _dbContext.Cars.Remove(car);
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction("MyCars", "Owner");
+        }
     }
 }
