@@ -3,86 +3,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta tags, CSS links, and title -->
-    <style>
-        /* CSS styles from the first file */
+	<!-- Meta tags, CSS links, and title -->
+	<style>
+		/* CSS styles from the first file */
 
 
 
-        .card-details-body {
-            padding: 20px;
-            float: right;
-        }
+		.card-details-body {
+			padding: 20px;
+			float: right;
+		}
 
-        .car-info p {
-            margin-bottom: 5px;
-        }
+		.car-info p {
+			margin-bottom: 5px;
+		}
 
-        .price {
-            font-size: 1.2rem;
-            margin-top: 20px;
-        }
+		.price {
+			font-size: 1.2rem;
+			margin-top: 20px;
+		}
 
-        .bookNowBtn {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+		.bookNowBtn {
+			background-color: #007bff;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			font-size: 1rem;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
 
-            .bookNowBtn:hover {
-                background-color: #0056b3;
-            }
-        .image-wrapper {
-            width: 35%;
-            padding: 20px;
-        }
-    </style>
+			.bookNowBtn:hover {
+				background-color: #0056b3;
+			}
+
+		.image-wrapper {
+			width: 35%;
+			padding: 20px;
+		}
+	</style>
 </head>
 <body>
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="alert alert-danger" role="alert">
-            @TempData["ErrorMessage"]
-        </div>
-    }
-    <div class="container">
-        <div class="card">
-            @using (Html.BeginForm("BookCar", "Car", FormMethod.Post, new { @class = "mb-4" }))
-            {
-             
-                <div class="image-wrapper">
-                <img src="@Model.ImageUrl" class="card-img-top" alt="Car Image">
-                </div>
-                <div class="card-details-body">
-                    <h2 class="card-title">@Model.Brand @Model.Category</h2>
-                    <div class="car-info">
-                        <p><i class="fas fa-map-marker-alt"></i> City: @Model.City</p>
-                        <p><i class="fas fa-calendar-alt"></i> Year: @Model.Year</p>
-                        <p><i class="fas fa-cogs"></i> Is Automatic: @(Model.IsAutomatic ? "Yes" : "No")</p>
-                        <p><i class="fas fa-gas-pump"></i> Fuel Type: @Model.FuelType</p>
-                        <p><i class="fas fa-bolt"></i> Power: @Model.Power KW</p>
-                        <p>From Date:</p>
-                        <input name="fromDate" type="date" value="@Model.FromDate" />
-                        <p>To Date:</p>
-                        <input name="toDate" type="date" value="@Model.ToDate" />
-                        <div class="col-md-offset-1 col-md-2 col-sm-12">
-                        </div>
-                        <input type="hidden" name="carId" value="@Model.CarId" />
-                    </div>
-                    <p class="price"><i class="fas fa-dollar-sign"></i> Price Per Day: $@Model.PricePerDay</p>
-                    <button id="bookNowBtn" class="bookNowBtn" type="submit">Book Now</button>
-                </div>
-            }
-        </div>
-    </div>
+	@if (TempData["ErrorMessage"] != null)
+	{
+		<div class="alert alert-danger" role="alert">
+			@TempData["ErrorMessage"]
+		</div>
+	}
+	<div class="container">
+		<div class="card">
+			@using (Html.BeginForm("BookCar", "Car", FormMethod.Post))
+			{
+				<div class="row">
+					<div class="col-md-8">
+						<div>
+							<img src="@Model.ImageUrl" class="card-img-top" alt="Car Image">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card-details-body">
+							<h2 class="card-title">@Model.Brand @Model.Category</h2>
+							<div class="car-info">
+								<p><i class="fas fa-map-marker-alt"></i> City: @Model.City</p>
+								<p><i class="fas fa-calendar-alt"></i> Year: @Model.Year</p>
+								<p><i class="fas fa-cogs"></i> Is Automatic: @(Model.IsAutomatic ? "Yes" : "No")</p>
+								<p><i class="fas fa-gas-pump"></i> Fuel Type: @Model.FuelType</p>
+								<p><i class="fas fa-bolt"></i> Power: @Model.Power KW</p>
+								<p>From Date:</p>
+								<input name="fromDate" type="date" value="@Model.FromDate" />
+								<p>To Date:</p>
+								<input name="toDate" type="date" value="@Model.ToDate" />
+								<div class="col-md-offset-1 col-md-2 col-sm-12">
+								</div>
+								<input type="hidden" name="carId" value="@Model.CarId" />
+							</div>
+							<p class="price"><i class="fas fa-dollar-sign"></i> Price Per Day: $@Model.PricePerDay</p>
+							<button id="bookNowBtn" class="bookNowBtn" type="submit">Book Now</button>
+						</div>
+					</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+				</div>
+
+
+			}
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>
