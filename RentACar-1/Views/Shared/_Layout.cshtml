@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Rufina:400,700" rel="stylesheet">
 
     <!-- title of site -->
-    <title>CarVilla</title>
+    <title>Rent a Car</title>
+
 
     <!-- For favicon png -->
     <link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png" />
@@ -71,12 +72,16 @@
         .page-container {
             width: 100% !important;
             padding: 0 !important;
-            margin-top: 135px !important
+            margin-top: 135px !important margin-bottom: 40px;
         }
 
         .wrap-sticky nav.navbar.bootsnav {
             background-color: #000 !important;
             box-shadow: 0 2px 5px rgba(0,0,0,.2) !important
+        }
+
+        label {
+            font-weight: 500 !important;
         }
     </style>
 </head>
@@ -108,12 +113,16 @@
                                     <li>
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">Car</a>
                                     </li>
-                                    <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="AddCar">Add Car</a>
-                                    </li>
-                                    <li>
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="MyCars">My Cars</a>
-                                    </li>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="AddCar">Add Car</a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="MyCars">My Cars</a>
+                                        </li>
+                                    }
+
 
                                     <partial name="_LoginPartial" />
                                 </ul><!--/.nav -->
@@ -134,29 +143,30 @@
                 @RenderBody()
             </main>
         </div>
-    </div>
-    </footer><!--/.contact-->
-    <!--contact end-->
-    <!-- Include all js compiled plugins (below), or include individual files as needed -->
 
-    <script src="assets/js/jquery.js"></script>
+        <!--Footer->
+        <partial name="_Footer" />
+        </div>
+        <!-- Include all js compiled plugins (below), or include individual files as needed -->
 
-    <!--modernizr.min.js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="assets/js/jquery.js"></script>
 
-    <!--bootstrap.min.js-->
-    <script src="assets/js/bootstrap.min.js"></script>
+        <!--modernizr.min.js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
-    <!-- bootsnav js -->
-    <script src="assets/js/bootsnav.js"></script>
+        <!--bootstrap.min.js-->
+        <script src="assets/js/bootstrap.min.js"></script>
 
-    <!--owl.carousel.js-->
-    <script src="assets/js/owl.carousel.min.js"></script>
+        <!-- bootsnav js -->
+        <script src="assets/js/bootsnav.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!--owl.carousel.js-->
+        <script src="assets/js/owl.carousel.min.js"></script>
 
-    <!--Custom JS-->
-    <script src="assets/js/custom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+        <!--Custom JS-->
+        <script src="assets/js/custom.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 
