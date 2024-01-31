@@ -5,7 +5,7 @@
 		display: flex !important;
 	}
 
-	.model-search-content{ 
+	.model-search-content {
 		postion: relative !important;
 		bottom: 0 !important;
 	}
@@ -22,70 +22,68 @@
 	new { Value = "Yes", Text = "Yes" },
 	new { Value = "No", Text = "No" }
 }, "Value", "Text");
-<div class="filters-container">
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="model-search-content">
-				<div class="row">
-					<div class="col-md-offset-1 col-md-2 col-sm-12">
-						<div class="single-model-search">
-							<h2>Select Brand</h2>
-							<div class="model-select-icon">
-									@Html.DropDownListFor(m => m.Filters.Brand, Model.BrandList, "Select Brand", new { @class = "form-control" })
-							</div><!-- /.model-select-icon -->
-						</div>
-							<div class="single-model-search">
-								<h2>Select City</h2>
-								<div class="model-select-icon">
-
-									@Html.DropDownListFor(m => m.Filters.City, Model.CityList, "Select City", new { @class = "form-control" })
-								</div><!-- /.model-select-icon -->
-							</div>
-					</div>
-					<div class="col-md-offset-1 col-md-2 col-sm-12">
-							<div class="single-model-search">
-								<h2>Select Category</h2>
-								<div class="model-select-icon">
-									@Html.DropDownListFor(m => m.Filters.Category, Model.CategoryList, "Select Category", new { @class = "form-control" })
-								</div><!-- /.model-select-icon -->
-							</div>
-						<div class="single-model-search">
-							<h2>Is Automatic</h2>
-							<div class="model-select-icon">
-										@Html.DropDownListFor(m => m.Filters.IsAutomatic, yesNoList, "Select isAutomatic", new { @class = "form-control" })
-
-
+	<div class="filters-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="model-search-content">
+						<div class="row">
+							<div class="col-md-offset-1 col-md-2 col-sm-12">
+								<div class="single-model-search">
+									<h2>Select Brand</h2>
+									<div class="model-select-icon">
+										@Html.DropDownListFor(m => m.Filters.Brand, Model.BrandList, "Select Brand", new { @class = "form-control" })
 									</div><!-- /.model-select-icon -->
-						</div>
-					</div>
-					<div class="col-md-offset-1 col-md-2 col-sm-12">
-						<div class="single-model-search">
-							<h2>select From Date</h2>
-							<div class="model-select-icon">
-									@Html.TextBoxFor(m => m.Filters.FromDate, new { type = "date", @class = "form-control" })
-							</div><!-- /.model-select-icon -->
-						</div>
-						<div class="single-model-search">
-							<h2>select To Date</h2>
-							<div class="model-select-icon">
-									@Html.TextBoxFor(m => m.Filters.ToDate, new { type = "date", @class = "form-control" })
-							</div><!-- /.model-select-icon -->
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-12">
-						<div class="single-model-search text-center">
-							<button class="welcome-btn model-search-btn" onclick="window.location.href='#'">
-								search
-							</button>
+								</div>
+								<div class="single-model-search">
+									<h2>Select City</h2>
+									<div class="model-select-icon">
+
+										@Html.DropDownListFor(m => m.Filters.City, Model.CityList, "Select City", new { @class = "form-control" })
+									</div><!-- /.model-select-icon -->
+								</div>
+							</div>
+							<div class="col-md-offset-1 col-md-2 col-sm-12">
+								<div class="single-model-search">
+									<h2>Select Category</h2>
+									<div class="model-select-icon">
+										@Html.DropDownListFor(m => m.Filters.Category, Model.CategoryList, "Select Category", new { @class = "form-control" })
+									</div><!-- /.model-select-icon -->
+								</div>
+								<div class="single-model-search">
+									<h2>Is Automatic</h2>
+									<div class="model-select-icon">
+										@Html.DropDownListFor(m => m.Filters.IsAutomatic, yesNoList, "Select isAutomatic", new { @class = "form-control" })
+									</div><!-- /.model-select-icon -->
+								</div>
+							</div>
+							<div class="col-md-offset-1 col-md-2 col-sm-12">
+								<div class="single-model-search">
+									<h2>select From Date</h2>
+									<div class="model-select-icon">
+										@Html.TextBoxFor(m => m.Filters.FromDate, new { type = "date", @class = "form-control" })
+									</div><!-- /.model-select-icon -->
+								</div>
+								<div class="single-model-search">
+									<h2>select To Date</h2>
+									<div class="model-select-icon">
+										@Html.TextBoxFor(m => m.Filters.ToDate, new { type = "date", @class = "form-control" })
+									</div><!-- /.model-select-icon -->
+								</div>
+							</div>
+							<div class="col-md-2 col-sm-12">
+								<div class="single-model-search text-center">
+									<button class="welcome-btn model-search-btn" onclick="window.location.href='#'">
+										search
+									</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-</div>
 }
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

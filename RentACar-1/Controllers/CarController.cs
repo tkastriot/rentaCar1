@@ -65,7 +65,8 @@ namespace RentACar_1.Controllers
                     (string.IsNullOrEmpty(filters.Category) || c.CarDetail.Category == filters.Category) &&
                     (string.IsNullOrEmpty(filters.City) || c.CarDetail.City == filters.City) &&
                     (!filters.FromDate.HasValue || !filters.ToDate.HasValue ||
-                     !c.Bookings.Any(b => (filters.FromDate >= b.ToDate || filters.ToDate <= b.FromDate))));
+		            !c.Bookings.Any(b =>
+			        filters.FromDate <= b.ToDate && filters.ToDate >= b.FromDate)));
 
             return cars;
         }
