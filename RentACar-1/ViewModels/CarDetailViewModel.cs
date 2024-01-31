@@ -1,4 +1,6 @@
-﻿namespace RentACar_1.ViewModels
+﻿using RentACar_1.Models;
+
+namespace RentACar_1.ViewModels
 {
     public class CarDetailViewModel
     {
@@ -15,5 +17,6 @@
         public decimal? PricePerDay { get; set; }
         public string? FromDate { get; set; }
         public string? ToDate { get; set; }
+        public List<Review> Reviews { get; set; }
     }
 }

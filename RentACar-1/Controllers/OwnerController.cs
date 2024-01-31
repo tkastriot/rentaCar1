@@ -75,7 +75,7 @@ public class OwnerController : Controller
             _dbContext.Cars.Add(car);
             await _dbContext.SaveChangesAsync();
 
-            return RedirectToAction("Index", "Home"); // Redirect to home page or any other page
+			return RedirectToAction("MyCars", "Owner");
         }
 
         return View(model);

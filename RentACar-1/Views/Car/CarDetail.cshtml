@@ -1,86 +1,168 @@
 ﻿@model RentACar_1.ViewModels.CarDetailViewModel
 
 
-	<style>
-		/* CSS styles from the first file */
+<style>
+	/* CSS styles from the first file */
 
 
 
-		.card-details-body {
-			padding: 20px;
-			float: right;
-		}
-
-		.car-info p {
-			margin-bottom: 5px;
-		}
-
-		.price {
-			font-size: 1.2rem;
-			margin-top: 20px;
-		}
-
-		.bookNowBtn {
-			background-color: #007bff;
-			color: #fff;
-			border: none;
-			border-radius: 5px;
-			padding: 10px 20px;
-			font-size: 1rem;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-		}
-
-			.bookNowBtn:hover {
-				background-color: #0056b3;
-			}
-
-		.image-wrapper {
-			width: 35%;
-			padding: 20px;
-		}
-	</style>
-	@if (TempData["ErrorMessage"] != null)
-	{
-		<div class="alert alert-danger" role="alert">
-			@TempData["ErrorMessage"]
-		</div>
+	.card-details-body {
+		padding: 20px;
+		float: right;
 	}
-	<div class="container">
-		<div class="card">
-			@using (Html.BeginForm("BookCar", "Car", FormMethod.Post))
-			{
-				<div class="row">
-					<div class="col-md-8">
-						<div>
-							<img src="@Model.ImageUrl" class="card-img-top" alt="Car Image">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card-details-body">
-							<h2 class="card-title">@Model.Brand @Model.Category</h2>
-							<div class="car-info">
-								<p><i class="fas fa-map-marker-alt"></i> City: @Model.City</p>
-								<p><i class="fas fa-calendar-alt"></i> Year: @Model.Year</p>
-								<p><i class="fas fa-cogs"></i> Is Automatic: @(Model.IsAutomatic ? "Yes" : "No")</p>
-								<p><i class="fas fa-gas-pump"></i> Fuel Type: @Model.FuelType</p>
-								<p><i class="fas fa-bolt"></i> Power: @Model.Power KW</p>
-								<p>From Date:</p>
-									<input name="fromDate" type="date" value="@(!string.IsNullOrEmpty(Model.FromDate) ? DateTime.Parse(Model.FromDate).ToString("yyyy-MM-dd") : string.Empty)" />
-								<p>To Date:</p>
-									<input name="toDate" type="date" value="@(!string.IsNullOrEmpty(Model.ToDate) ? DateTime.Parse(Model.ToDate).ToString("yyyy-MM-dd") : string.Empty)" />
-								<div class="col-md-offset-1 col-md-2 col-sm-12">
-								</div>
-								<input type="hidden" name="carId" value="@Model.CarId" />
-							</div>
-							<div>Description: 
-								<div>@Model.Description</div>
-							</div>
-							<p class="price"><i class="fas fa-dollar-sign"></i> Price Per Day: $@Model.PricePerDay</p>
-							<button id="bookNowBtn" class="bookNowBtn" type="submit">Book Now</button>
-						</div>
+
+	.car-info p {
+		margin-bottom: 5px;
+	}
+
+	.price {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+
+	.image-wrapper {
+		width: 35%;
+		padding: 20px;
+	}
+
+	.reviews-container {
+		margin-bottom: 20px;
+	}
+
+	.review-list {
+		list-style-type: none;
+		padding: 0;
+		margin: 10px 0;
+	}
+
+	.review-item {
+		width: 100%;
+		border: 1px solid #ccc;
+		margin-bottom: 10px;
+		padding: 10px;
+		border-radius: 5px;
+	}
+
+	.review-header {
+		margin-bottom: 5px;
+	}
+
+	.rating {
+		font-weight: bold;
+		color: #4e4ffa;
+	}
+
+	.comment {
+		margin-top: 5px;
+	}
+
+	.no-reviews {
+		margin-bottom: 20px;
+	}
+
+	.add-review-form {
+		max-width: 500px;
+	}
+
+	input[type="number"],
+	textarea {
+		width: 100%;
+		padding: 8px;
+	}
+</style>
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-danger" role="alert">
+		@TempData["ErrorMessage"]
+	</div>
+}
+<div class="container">
+	<div class="card">
+		@using (Html.BeginForm("BookCar", "Car", FormMethod.Post))
+		{
+			<div class="row">
+				<div class="col-md-8">
+					<div>
+						<img src="@Model.ImageUrl" class="card-img-top" alt="Car Image">
 					</div>
 				</div>
-			}
-		</div>
+				<div class="col-md-4">
+					<div class="card-details-body">
+						<h2 class="card-title">@Model.Brand @Model.Category</h2>
+						<div class="car-info">
+							<p><i class="fas fa-map-marker-alt"></i> City: @Model.City</p>
+							<p><i class="fas fa-calendar-alt"></i> Year: @Model.Year</p>
+							<p><i class="fas fa-cogs"></i> @(Model.IsAutomatic ? "Automcatic" : "Manual")</p>
+							<p><i class="fas fa-gas-pump"></i> Fuel Type: @Model.FuelType</p>
+							<p><i class="fas fa-bolt"></i> Power: @Model.Power KW</p>
+							<p>From Date:</p>
+							<input name="fromDate" type="date" value="@(!string.IsNullOrEmpty(Model.FromDate) ? DateTime.Parse(Model.FromDate).ToString("yyyy-MM-dd") : string.Empty)" />
+							<p>To Date:</p>
+							<input name="toDate" type="date" value="@(!string.IsNullOrEmpty(Model.ToDate) ? DateTime.Parse(Model.ToDate).ToString("yyyy-MM-dd") : string.Empty)" />
+							<div class="col-md-offset-1 col-md-2 col-sm-12">
+							</div>
+							<input type="hidden" name="carId" value="@Model.CarId" />
+						</div>
+						<div>
+							Description:
+							<div>@Model.Description</div>
+						</div>
+						<p class="price"><i class="fas fa-dollar-sign"></i> Price Per Day: $@Model.PricePerDay</p>
+						<button id="bookNowBtn" class="welcome-btn" type="submit">Book Now</button>
+					</div>
+				</div>
+			</div>
+		}
 	</div>
+	@if (Model.Reviews.Any())
+	{
+		<div class="reviews-container col-md-8">
+			<h3>Reviews</h3>
+			<ul class="review-list">
+				@foreach (var review in Model.Reviews)
+				{
+					<li class="review-item">
+						<div class="review-header">
+							<strong>Rating: </strong>
+							<div class="rating">
+								@for (int i = 1; i <= 5; i++)
+								{
+									<span class="star @(i <= review.Rating ? "filled" : "")">&#9733;</span>
+								}
+							</div>
+						</div>
+						<div class="review-body">
+							<p class="comment">@review.Comment</p>
+						</div>
+					</li>
+				}
+			</ul>
+		</div>
+	}
+	else
+	{
+		<div class="no-reviews">
+			<p>No reviews available for this car.</p>
+		</div>
+	}
+
+	<!-- Display form to add a new review -->
+	<form class="add-review-form col-md-8" asp-action="AddReview" method="post">
+		<input type="hidden" name="carId" value="@Model.CarId">
+		<div class="form-group">
+			<label for="rating">Rating:</label>
+			<div class="rating">
+				@for (int i = 1; i <= 5; i++)
+				{
+					<input type="radio" id="rating-@i" name="rating" value="@i" required />
+					<label for="rating-@i">&#9733;</label>
+				}
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="comment">Comment:</label>
+			<textarea name="comment" id="comment" required></textarea>
+		</div>
+		<button type="submit" class="welcome-btn">Submit Review</button>
+	</form>
+</div>

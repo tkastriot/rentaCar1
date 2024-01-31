@@ -1,4 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -83,8 +85,14 @@ namespace RentACar_1.Controllers
                 return NotFound();
             }
 
-            // Map the retrieved data to CarDetailViewModel and pass it to the view
-            var viewModel = new CarDetailViewModel
+            // Retrieve reviews for the specified car
+            var reviews = _dbContext.Reviews
+	            .Where(r => r.CarID == carId)
+	            .Include(r => r.Car) // Include the associated car
+	            .ToList();
+
+			// Map the retrieved data to CarDetailViewModel and pass it to the view
+			var viewModel = new CarDetailViewModel
             {
                 Brand = carData.CarDetail.Brand,
                 Category = carData.CarDetail.Category,
@@ -98,10 +106,12 @@ namespace RentACar_1.Controllers
                 FromDate = fromDate,
                 ToDate = toDate,
                 ImageUrl= carData.CarDetail.ImageUrl,
+                Reviews = reviews
             };
 
             return View(viewModel);
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> BookCar(int carId, DateTime fromDate, DateTime toDate)
         {
@@ -186,17 +196,17 @@ namespace RentACar_1.Controllers
             var viewModel = new EditCarViewModel
             {
                 CarId = car.CarID,
-                Brand = car.CarDetail?.Brand,
-                Category = car.CarDetail?.Category,
+                Brand = car.CarDetail?.Brand ?? "",
+                Category = car.CarDetail?.Category ?? "",
                 Year = car.CarDetail?.Year ?? 0,
-                Description = car.CarDetail?.Description,
+                Description = car.CarDetail?.Description ?? "",
                 IsAutomatic = car.CarDetail?.IsAutomatic ?? false,
-                FuelType = car.CarDetail?.FuelType,
+                FuelType = car.CarDetail?.FuelType ?? "",
                 Power = car.CarDetail?.Power ?? 0,
-                City = car.CarDetail?.City,
+                City = car.CarDetail?.City ?? "",
                 RegistrationNumber = car.RegistrationNumber,
                 PricePerDay = car.PricePerDay,
-                ImageUrl = car.CarDetail.ImageUrl,
+                ImageUrl = car.CarDetail?.ImageUrl ?? "",
             };
 
             return View(viewModel);
@@ -272,5 +282,37 @@ namespace RentACar_1.Controllers
 
             return RedirectToAction("MyCars", "Owner");
         }
-    }
+
+		[HttpPost]
+		public async Task<IActionResult> AddReviewAsync(int carId, int rating, string comment)
+		{
+			if (carId == null)
+			{
+				return NotFound();
+			}
+
+			var currentUser = await _userManager.GetUserAsync(User);
+            // Get the current user's ID
+            if (currentUser == null)
+            {
+                return Redirect("~/Identity/Account/Login");
+            }
+
+            // Create a new review object
+            var review = new Review
+			{
+				CarID = carId,
+                RentalID = currentUser.Id,
+				Rating = rating,
+				Comment = comment
+			};
+
+			// Add the new review to the database
+			_dbContext.Reviews.Add(review);
+			_dbContext.SaveChangesAsync();
+
+			// Redirect back to the car details page
+			return RedirectToAction("CarDetail", new { carId });
+		}
+	}
 }

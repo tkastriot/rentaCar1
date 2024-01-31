@@ -13,6 +13,7 @@ namespace RentACar_1.Data
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarDetails> CarDetails { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

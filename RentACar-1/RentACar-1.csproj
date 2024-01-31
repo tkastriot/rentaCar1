@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\assets\css\animate.css" />
     <None Include="wwwroot\assets\css\bootsnav.css" />
     <None Include="wwwroot\assets\css\bootstrap.min.css" />
