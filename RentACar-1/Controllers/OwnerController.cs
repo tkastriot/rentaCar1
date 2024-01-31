@@ -43,6 +43,7 @@ public class OwnerController : Controller
         if (ModelState.IsValid)
         {
             // Create CarDetails entity
+
             var carDetail = new CarDetails
             {
                 Brand = model.Brand,

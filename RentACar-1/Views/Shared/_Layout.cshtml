@@ -72,7 +72,8 @@
         .page-container {
             width: 100% !important;
             padding: 0 !important;
-            margin-top: 135px !important margin-bottom: 40px;
+            margin-top: 135px !important;
+            margin-bottom: 40px;
         }
 
         .wrap-sticky nav.navbar.bootsnav {
@@ -113,7 +114,7 @@
                                     <li>
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Car" asp-action="Index">Car</a>
                                     </li>
-                                    @if (User.IsInRole("Admin"))
+                                    @if (User.IsInRole("Owner"))
                                     {
                                         <li>
                                             <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="AddCar">Add Car</a>
@@ -121,7 +122,12 @@
                                         <li>
                                             <a class="nav-link text-dark" asp-area="" asp-controller="Owner" asp-action="MyCars">My Cars</a>
                                         </li>
-                                    }
+                                    } else if(User.IsInRole("Renter"))
+                                    {
+                                        <li>
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Booking" asp-action="MyBookings"> My Bookings  </a>
+                                        </li>
+                                     }
 
 
                                     <partial name="_LoginPartial" />
@@ -142,10 +148,11 @@
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
+            <partial name="_Footer" />
         </div>
 
         <!--Footer->
-        <partial name="_Footer" />
+       
         </div>
         <!-- Include all js compiled plugins (below), or include individual files as needed -->
 

@@ -1,44 +1,99 @@
-﻿@model RentACar_1.Models.Booking
+﻿<style>
+	/* Style for the container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Booking Detail</title>
-    <style>
-     
-        h1, h2, h3 {
-            color: #007bff;
-        }
+/* Style for the booking detail section */
+.booking-detail {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
-        p {
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1 class="text-center">Booking Detail</h1>
-        <div>
-            <h2>Booking ID: @Model.BookingID</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>Car Details</h3>
-                    <p><strong>Brand:</strong> @Model.Car.CarDetail.Brand</p>
-                    <p><strong>Category:</strong> @Model.Car.CarDetail.Category</p>
-                    <!-- Add more car details as needed -->
-                </div>
-                <div class="col-md-6">
-                    <h3>Renter Details</h3>
-                    <p><strong>Name:</strong> @Model.Renter.FirstName</p>
-                    <p><strong>Email:</strong> @Model.Renter.Email</p>
-                    <!-- Add more renter details as needed -->
+/* Style for the car image */
+.booking-detail img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Style for car info */
+.car-info {
+    margin-top: 20px;
+}
+
+.car-info h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.car-info p {
+    margin-bottom: 5px;
+}
+
+/* Style for renter detail section */
+.renter-detail {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Style for booking dates section */
+.booking-dates {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Style for icons */
+.booking-detail i {
+    margin-right: 5px;
+}
+
+</style>
+
+    @model RentACar_1.Models.Booking
+
+<div class="container">
+    <h1>Booking Detail</h1>
+    <div class="booking-detail">
+        <h2>Booking ID: @Model.BookingID</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Model.Car.CarDetail.ImageUrl" alt="Car Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <div class="car-info">
+                    <h3>@Model.Car.CarDetail.Brand - @Model.Car.CarDetail.Category</h3>
+                    <p>Price Per Day: $@Model.Car.PricePerDay</p>
+                    <p><i class="fas fa-map-marker-alt"></i> City: @Model.Car.CarDetail.City</p>
+                    <p><i class="fas fa-calendar-alt"></i> Year: @Model.Car.CarDetail.Year</p>
+                    <p><i class="fas fa-cogs"></i> @(Model.Car.CarDetail.IsAutomatic ? "Automatic" : "Manual")</p>
+                    <p><i class="fas fa-gas-pump"></i> Fuel Type: @Model.Car.CarDetail.FuelType</p>
+                    <p><i class="fas fa-bolt"></i> Power: @Model.Car.CarDetail.Power KW</p>
                 </div>
             </div>
-            <h3 class="mt-4">Booking Dates</h3>
-            <p><strong>From:</strong> @Model.FromDate.ToShortDateString()</p>
-            <p><strong>To:</strong> @Model.ToDate.ToShortDateString()</p>
-            <!-- Add more owner details as needed -->
         </div>
     </div>
-</body>
-</html>
+
+    <div class="renter-detail">
+        <h3>Renter Details</h3>
+        <p>Name: @Model.Renter.FirstName @Model.Renter.LastName</p>
+        <p>Email: @Model.Renter.Email</p>
+        <p>Phone Number: @Model.Renter.PhoneNumber</p>
+    </div>
+
+    <div class="booking-dates">
+        <h3>Booking Dates</h3>
+        <p>From: @Model.FromDate.ToShortDateString()</p>
+        <p>To: @Model.ToDate.ToShortDateString()</p>
+    </div>
+</div>

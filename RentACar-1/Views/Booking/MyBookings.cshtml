@@ -1,0 +1,91 @@
+﻿ @model List<RentACar_1.Models.Booking>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .booking-wrapper {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .booking-wrapper h2 {
+        color: #333;
+    }
+
+    .booking-details img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .booking-details h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .car-info p {
+        margin-bottom: 5px;
+    }
+
+    .booking-dates {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    .booking-dates h3 {
+        color: #333;
+    }
+</style>
+<div class="container">
+    <h1>My Bookings</h1>
+
+    @if (Model.Any())
+    {
+        @foreach (var booking in Model)
+        {
+            <div class="booking-wrapper">
+
+                <h2>Booking ID: @booking.BookingID</h2>
+                <div class="booking-details">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="@booking.Car.CarDetail.ImageUrl" alt="Car Image" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="car-info">
+                                <h3>@booking.Car.CarDetail.Brand - @booking.Car.CarDetail.Category</h3>
+                                <p>Price Per Day: $@booking.Car.PricePerDay</p>
+                                <p><i class="fas fa-map-marker-alt"></i> City: @booking.Car.CarDetail?.City</p>
+                                <p><i class="fas fa-calendar-alt"></i> Year: @booking.Car.CarDetail?.Year</p>
+                                <p><i class="fas fa-cogs"></i> @(@booking.Car.CarDetail?.IsAutomatic ?? false ? "Automatic" : "Manual")</p>
+                                <p><i class="fas fa-gas-pump"></i> Fuel Type: @booking.Car.CarDetail?.FuelType</p>
+                                <p><i class="fas fa-bolt"></i> Power: @booking.Car.CarDetail?.Power KW</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-dates">
+                    <h3>Booking Dates</h3>
+                    <p>From: @booking.FromDate.ToShortDateString()</p>
+                    <p>To: @booking.ToDate.ToShortDateString()</p>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col">
+            <p>No bookings found.</p>
+        </div>
+    }
+</div>
