@@ -4,57 +4,95 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <h1>@ViewData["Title"]</h1>
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.FirstName">First Name</label>
-                <input asp-for="Input.FirstName" class="form-control" autocomplete="firstName" aria-required="true" placeholder="Enter your name" />   
-                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.LastName">Last Name</label>
-                <input asp-for="Input.LastName" class="form-control" autocomplete="lastName" aria-required="true" placeholder="Enter your surname" /> 
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.Birthdate">Birthdate</label>
-                <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="Enter your name" />
-                <span asp-validation-for="Input.Birthdate" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.PhoneNumber">PhoneNumber</label>
-                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phoneNumber" aria-required="true" placeholder="Enter your name" />
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.Role"> </label>
-                <select asp-for="Input.Role" class="form-control" asp-items="@RentACar_1.Utility.Helper.GetRolesForDropDown()" aria-required="true"></select>
-                <span asp-validation-for="Input.Role" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.Email">Email</label>
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.Password">Password</label>
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
+<style>
+    .register-container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 10px 40px 0px rgba(38,40,64,.2);
+    }
+
+        .register-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    .register-form label {
+        font-weight: bold;
+    }
+
+    .register-form input[type="text"],
+    .register-form input[type="email"],
+    .register-form input[type="password"],
+    .register-form select {
+        padding: 6px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .register-form .checkbox label {
+        font-weight: normal;
+    }
+
+    .register-links {
+        margin-top: 20px;
+    }
+
+    .register-links a {
+        font-size: 12px;
+    }
+</style>
+
+<div class="register-container">
+    <h1>@ViewData["Title"]</h1>
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="register-form">
+        <h2>Create a new account.</h2>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.FirstName">First Name</label>
+            <input asp-for="Input.FirstName" class="form-control" autocomplete="firstName" aria-required="true" placeholder="Enter your name" />
+            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.LastName">Last Name</label>
+            <input asp-for="Input.LastName" class="form-control" autocomplete="lastName" aria-required="true" placeholder="Enter your surname" />
+            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.Birthdate">Birthdate</label>
+            <input asp-for="Input.Birthdate" class="form-control" autocomplete="birthdate" aria-required="true" placeholder="Enter your name" />
+            <span asp-validation-for="Input.Birthdate" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.PhoneNumber">PhoneNumber</label>
+            <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phoneNumber" aria-required="true" placeholder="Enter your name" />
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.Role">Role</label>
+            <select asp-for="Input.Role" class="form-control" asp-items="@RentACar_1.Utility.Helper.GetRolesForDropDown()" aria-required="true"></select>
+            <span asp-validation-for="Input.Role" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.Email">Email</label>
+            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.Password">Password</label>
+            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+    </form>
 </div>
 
 @section Scripts {

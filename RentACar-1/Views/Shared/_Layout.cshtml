@@ -73,7 +73,6 @@
             width: 100% !important;
             padding: 0 !important;
             margin-top: 135px !important;
-            margin-bottom: 40px;
         }
 
         .wrap-sticky nav.navbar.bootsnav {
@@ -83,6 +82,10 @@
 
         label {
             font-weight: 500 !important;
+        }
+        
+        #contact {
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -129,7 +132,6 @@
                                         </li>
                                      }
 
-
                                     <partial name="_LoginPartial" />
                                 </ul><!--/.nav -->
                             </div><!-- /.navbar-collapse -->
@@ -138,10 +140,8 @@
                     <!-- End Navigation -->
                 </div><!--/.header-area-->
                 <div class="clearfix"></div>
-
             </div><!-- /.top-area-->
             <!-- top-area End -->
-
         </section>
 
         <div class="page-container">
@@ -151,7 +151,6 @@
             <partial name="_Footer" />
         </div>
 
-        <!--Footer->
        
         </div>
         <!-- Include all js compiled plugins (below), or include individual files as needed -->
@@ -174,6 +173,9 @@
 
         <!--Custom JS-->
         <script src="assets/js/custom.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 

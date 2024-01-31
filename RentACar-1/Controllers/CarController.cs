@@ -144,15 +144,13 @@ namespace RentACar_1.Controllers
             if (currentUser == null)
             {
                 return Redirect("~/Identity/Account/Login");
-                // Now you have the userId to use as needed
             }
-
 
             // Create a new booking
             var booking = new Booking
             {
                 CarID = carId,
-                RenterID = currentUser.Id, // Assuming you're using user authentication
+                RenterID = currentUser.Id,
                 FromDate = fromDate,
                 ToDate = toDate
             };

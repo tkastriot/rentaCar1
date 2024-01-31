@@ -1,9 +1,6 @@
 ﻿@model RentACar_1.ViewModels.CarDetailViewModel
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<!-- Meta tags, CSS links, and title -->
+
 	<style>
 		/* CSS styles from the first file */
 
@@ -43,8 +40,6 @@
 			padding: 20px;
 		}
 	</style>
-</head>
-<body>
 	@if (TempData["ErrorMessage"] != null)
 	{
 		<div class="alert alert-danger" role="alert">
@@ -78,20 +73,14 @@
 								</div>
 								<input type="hidden" name="carId" value="@Model.CarId" />
 							</div>
+							<div>Description: 
+								<div>@Model.Description</div>
+							</div>
 							<p class="price"><i class="fas fa-dollar-sign"></i> Price Per Day: $@Model.PricePerDay</p>
 							<button id="bookNowBtn" class="bookNowBtn" type="submit">Book Now</button>
 						</div>
 					</div>
-
 				</div>
-
-
 			}
 		</div>
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
-</body>
-</html>

@@ -27,51 +27,37 @@ namespace RentACar_1.Controllers
 				Filters = filters,
 				BrandList = new SelectList(_dbContext.CarDetails.Select(cd => cd.Brand).Distinct()),
 				CategoryList = new SelectList(_dbContext.CarDetails.Select(cd => cd.Category).Distinct()),
-				CityList = new SelectList(_dbContext.CarDetails.Select(cd => cd.City).Distinct())
-            };
+				CityList = new SelectList(_dbContext.CarDetails.Select(cd => cd.City).Distinct()),
+				NewestCars = GetNewestCars(),
+			};
 
 			return View(viewModel);
 		}
 
-        [HttpPost]
-        public IActionResult NewestCars()
-        {
-            // Retrieve the 5 newest cars based on the Year property
-            var newestCars = _dbContext.Cars
-                .Include(c => c.CarDetail)
-                .OrderByDescending(c => c.CarDetail.Year)
-                .Take(5)
-                .ToList();
+		private List<CarDetailViewModel> GetNewestCars()
+		{
+			var newestCars = _dbContext.Cars
+				.Include(c => c.CarDetail)
+				.OrderByDescending(c => c.CarDetail.Year)
+				.Take(5)
+				.Select(c => new CarDetailViewModel
+				{
+					Brand = c.CarDetail.Brand,
+					Category = c.CarDetail.Category,
+					City = c.CarDetail.City,
+					Year = c.CarDetail.Year,
+					IsAutomatic = c.CarDetail.IsAutomatic,
+					FuelType = c.CarDetail.FuelType,
+					Power = c.CarDetail.Power,
+					PricePerDay = c.PricePerDay,
+					CarId = c.CarID,
+				})
+				.ToList();
 
-            // Create a list to store CarDetailViewModel instances
-            var carViewModels = new List<CarDetailViewModel>();
+			return newestCars;
+		}
 
-            // Iterate over each car and create a CarDetailViewModel instance
-            foreach (var car in newestCars)
-            {
-                var viewModel = new CarDetailViewModel
-                {
-                    Brand = car.CarDetail.Brand,
-                    Category = car.CarDetail.Category,
-                    City = car.CarDetail.City,
-                    Year = car.CarDetail.Year,
-                    IsAutomatic = car.CarDetail.IsAutomatic,
-                    FuelType = car.CarDetail.FuelType,
-                    Power = car.CarDetail.Power,
-                    PricePerDay = car.PricePerDay,
-                    CarId = car.CarID,
-                };
-
-                // Add the view model to the list
-                carViewModels.Add(viewModel);
-            }
-
-            // Pass the list of view models to the view
-            return View(carViewModels);
-        }
- 
-
-        public IActionResult Privacy()
+		public IActionResult Privacy()
         {
             return View();
         }

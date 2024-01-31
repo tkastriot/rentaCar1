@@ -1,0 +1,60 @@
+﻿@model RentACar_1.ViewModels.HomeIndexViewModel
+
+<!--new-cars start -->
+<section id="new-cars" class="new-cars">
+	<div class="container">
+		<div class="section-header">
+			<p>checkout <span>the</span> latest cars</p>
+			<h2>newest cars</h2>
+		</div><!--/.section-header-->
+		<div class="new-cars-content">
+			@if (Model.NewestCars.Any())
+			{
+				<div class="owl-carousel owl-theme" id="new-cars-carousel">
+					@foreach (var car in Model.NewestCars)
+					{
+						<div class="new-cars-item">
+							<div class="single-new-cars-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="new-cars-img">
+											<img src="@car.ImageUrl" alt="img" />
+										</div><!--/.new-cars-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="new-cars-txt">
+											<h2><a href="#">@car.Brand <span> @car.Category</span></a></h2>
+											<p class="new-cars-para2">
+												@car.Description
+												<div class="car-info">
+													<p class="info-deatils"><i class="fas fa-map-marker-alt"></i> @car?.City</p>
+													<p class="info-deatils"><i class="fas fa-calendar-alt"></i> @car?.Year</p>
+													<p class="info-deatils"><i class="fas fa-cogs"></i> @(car?.IsAutomatic ?? false ? "Automatic" : "Manual")</p>
+													<p class="info-deatils"><i class="fas fa-gas-pump"></i> @car?.FuelType</p>
+													<p class="info-deatils"><i class="fas fa-bolt"></i> @car?.Power KW</p>
+												</div>
+											</p>
+											<button class="welcome-btn new-cars-btn">
+												<a asp-controller="Car" asp-action="CarDetail" asp-route-carId="@car?.CarId">View Details</a>
+											</button>
+										</div><!--/.new-cars-txt-->
+									</div><!--/.col-->
+								</div><!--/.row-->
+							</div><!--/.single-new-cars-item-->
+						</div>
+						<!--/.new-cars-item-->
+					}
+				</div>
+			}
+
+			<!--/#new-cars-carousel-->
+		</div>
+
+		<!--/.new-cars-content-->
+	</div>
+
+	<!--/.container-->
+
+</section>
+
+<!--/.new-cars-->

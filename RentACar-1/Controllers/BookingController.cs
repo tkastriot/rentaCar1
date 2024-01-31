@@ -8,6 +8,7 @@ using RentACar_1.Data;
 using Microsoft.AspNetCore.Identity;
 using RentACar_1.ViewModels;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 public class BookingController : Controller
 {
@@ -30,10 +31,10 @@ public class BookingController : Controller
         }
 
 		var bookings = await _dbContext.Bookings
-	  .Include(b => b.Car)
-	  .ThenInclude(c => c.CarDetail)
-	  .Include(b => b.Renter)
-	  .FirstOrDefaultAsync(m => m.BookingID == bookingID);
+	      .Include(b => b.Car)
+	      .ThenInclude(c => c.CarDetail)
+	      .Include(b => b.Renter)
+	      .FirstOrDefaultAsync(m => m.BookingID == bookingID);
 
 		if (bookings == null)
 		{
@@ -43,6 +44,7 @@ public class BookingController : Controller
 		return View("BookingDetails", bookings);
     }
 
+    [Authorize]
     public IActionResult MyBookings()
     {
 
