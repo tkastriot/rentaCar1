@@ -1,93 +1,103 @@
-﻿   @model RentACar_1.Models.Booking
+﻿@model RentACar_1.Models.Booking
 
-<!-- Booking Detail -->
 <style>
-    .booking-detail-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+	.booking-detail-container {
+		max-width: 1000px;
+		margin: 0 auto;
+	}
 
-    .booking-detail {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
+	.booking-detail {
+		background-color: #fff;
+		border: 1px solid #ddd;
+		padding: 20px;
+		margin-bottom: 20px;
+	}
 
-        .booking-detail img {
-            width: 100%;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
+	.booking-detail img {
+		width: 100%;
+		//border-radius: 5px;
+		margin-bottom: 20px;
+	}
 
-    .car-info h3 {
-        color: #333;
-        margin-bottom: 10px;
-    }
+	.booking-detail-container h3 {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
 
-    .car-info p {
-        margin-bottom: 5px;
-    }
+	.car-info p {
+		margin-bottom: 5px;
+		font-size: 16px;
+	}
 
-    .renter-detail {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
+	.renter-detail {
+		background-color: #f9f9f9;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		padding: 20px;
+		margin-bottom: 20px;
+	}
 
-    .booking-dates {
-        background-color: #f9f9f9;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
+	.booking-dates {
+		background-color: #f9f9f9;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		padding: 20px;
+		margin-bottom: 20px;
+	}
 
-        .booking-dates h3 {
-            color: #333;
-        }
+	.booking-detail i {
+		margin-right: 5px;
+	}
 
-    .booking-detail i {
-        margin-right: 5px;
-    }
+	/* New styles */
+	.success-message {
+		background-color: #9bdf9d94;
+		color: #fff;
+		padding: 10px;
+		border-radius: 5px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.title {
+		text-align: center;
+		padding: 20px;
+	}
 </style>
 
 <div class="booking-detail-container">
-    <h1 class="text-center">Booking Detail</h1>
-    <div class="booking-detail">
-        <h2>Booking ID: @Model.BookingID</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="@Model.Car.CarDetail.ImageUrl" alt="Car Image" class="img-fluid">
-            </div>
-            <div class="col-md-6">
-                <div class="car-info">
-                    <h3>@Model.Car.CarDetail.Brand - @Model.Car.CarDetail.Category</h3>
-                    <p>Price Per Day: $@Model.Car.PricePerDay</p>
-                    <p><i class="fas fa-map-marker-alt"></i> City: @Model.Car.CarDetail.City</p>
-                    <p><i class="fas fa-calendar-alt"></i> Year: @Model.Car.CarDetail.Year</p>
-                    <p><i class="fas fa-cogs"></i> @(Model.Car.CarDetail.IsAutomatic ? "Automatic" : "Manual")</p>
-                    <p><i class="fas fa-gas-pump"></i> Fuel Type: @Model.Car.CarDetail.FuelType</p>
-                    <p><i class="fas fa-bolt"></i> Power: @Model.Car.CarDetail.Power KW</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="renter-detail">
-        <h3>Renter Details</h3>
-        <p>Name: @Model.Renter.FirstName @Model.Renter.LastName</p>
-        <p>Email: @Model.Renter.Email</p>
-        <p>Phone Number: @Model.Renter.PhoneNumber</p>
-    </div>
-
-    <div class="booking-dates">
-        <h3>Booking Dates</h3>
-        <p>From: @Model.FromDate.ToShortDateString()</p>
-        <p>To: @Model.ToDate.ToShortDateString()</p>
-    </div>
+	<h1 class="title">Booking Detail</h1>
+	<div class="booking-detail">
+		<div class="success-message">
+			<h2>Booking Saved Successfully</h2>
+			<h2>Booking ID: @Model.BookingID</h2>
+		</div>
+		<div class="booking-details">
+			<div class="row">
+				<div class="col-md-6">
+					<img src="@Model.Car.CarDetail.ImageUrl" alt="Car Image" class="img-fluid">
+				</div>
+				<div class="col-md-6">
+					<div class="car-info">
+						<h3>@Model.Car.CarDetail.Brand - @Model.Car.CarDetail.Category</h3>
+						<p>Price Per Day: $@Model.Car.PricePerDay</p>
+						<p><i class="fas fa-map-marker-alt"></i> City: @Model.Car.CarDetail.City</p>
+						<p><i class="fas fa-calendar-alt"></i> Year: @Model.Car.CarDetail.Year</p>
+						<p><i class="fas fa-cogs"></i> @(Model.Car.CarDetail.IsAutomatic ? "Automatic" : "Manual")</p>
+						<p><i class="fas fa-gas-pump"></i> Fuel Type: @Model.Car.CarDetail.FuelType</p>
+						<p><i class="fas fa-bolt"></i> Power: @Model.Car.CarDetail.Power KW</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="renter-detail">
+			<h3>Details</h3>
+			<p>Renter: @Model.Renter.FirstName @Model.Renter.LastName</p>
+			<p>Email: @Model.Renter.Email</p>
+			<br/>
+			<h3>Booking Dates</h3>
+			<p> @Model.FromDate.ToShortDateString() - @Model.ToDate.ToShortDateString()</p>
+		</div>
+	</div>
 </div>

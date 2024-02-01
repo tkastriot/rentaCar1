@@ -106,6 +106,7 @@ namespace RentACar_1.Controllers
                 FromDate = fromDate,
                 ToDate = toDate,
                 ImageUrl= carData.CarDetail.ImageUrl,
+                Description = carData.CarDetail.Description,
                 Reviews = reviews
             };
 

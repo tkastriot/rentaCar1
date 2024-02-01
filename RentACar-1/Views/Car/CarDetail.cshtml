@@ -97,8 +97,6 @@
 							<input name="fromDate" type="date" value="@(!string.IsNullOrEmpty(Model.FromDate) ? DateTime.Parse(Model.FromDate).ToString("yyyy-MM-dd") : string.Empty)" />
 							<p>To Date:</p>
 							<input name="toDate" type="date" value="@(!string.IsNullOrEmpty(Model.ToDate) ? DateTime.Parse(Model.ToDate).ToString("yyyy-MM-dd") : string.Empty)" />
-							<div class="col-md-offset-1 col-md-2 col-sm-12">
-							</div>
 							<input type="hidden" name="carId" value="@Model.CarId" />
 						</div>
 						<div>
