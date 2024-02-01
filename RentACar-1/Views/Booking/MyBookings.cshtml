@@ -1,4 +1,4 @@
-﻿ @model List<RentACar_1.Models.Booking>
+﻿@model List<RentACar_1.Models.Booking>
 
 <style>
     .container {
@@ -7,54 +7,73 @@
         padding: 20px;
     }
 
-    .booking-wrapper {
-        background-color: #f9f9f9;
+    .booking-card {
+        background-color: #fff;
         border: 1px solid #ddd;
-        border-radius: 5px;
+      //  border-radius: 8px;
         padding: 20px;
         margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .booking-wrapper h2 {
-        color: #333;
-    }
+        .booking-card h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
 
     .booking-details img {
         width: 100%;
-        border-radius: 5px;
+       // border-radius: 8px;
         margin-bottom: 20px;
     }
 
-    .booking-details h3 {
+    .car-info h3 {
         color: #333;
+        font-size: 20px;
         margin-bottom: 10px;
     }
 
     .car-info p {
         margin-bottom: 5px;
+        font-size: 16px;
     }
 
     .booking-dates {
         background-color: #f9f9f9;
         border: 1px solid #ddd;
-        border-radius: 5px;
+        border-radius: 8px;
         padding: 20px;
         margin-top: 20px;
     }
 
-    .booking-dates h3 {
-        color: #333;
+        .booking-dates h3 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+    .no-bookings {
+        text-align: center;
+        color: #777;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .title { 
+        text-align: center;
+        padding: 20px;
     }
 </style>
+
 <div class="container">
-    <h1>My Bookings</h1>
+    <h1 class="title">My Bookings</h1>
 
     @if (Model.Any())
     {
         @foreach (var booking in Model)
         {
-            <div class="booking-wrapper">
-
+            <div class="booking-card">
                 <h2>Booking ID: @booking.BookingID</h2>
                 <div class="booking-details">
                     <div class="row">
@@ -64,7 +83,7 @@
                         <div class="col-md-6">
                             <div class="car-info">
                                 <h3>@booking.Car.CarDetail.Brand - @booking.Car.CarDetail.Category</h3>
-                                <p>Price Per Day: $@booking.Car.PricePerDay</p>
+                                <p><strong>Price Per Day:</strong> $@booking.Car.PricePerDay</p>
                                 <p><i class="fas fa-map-marker-alt"></i> City: @booking.Car.CarDetail?.City</p>
                                 <p><i class="fas fa-calendar-alt"></i> Year: @booking.Car.CarDetail?.Year</p>
                                 <p><i class="fas fa-cogs"></i> @(@booking.Car.CarDetail?.IsAutomatic ?? false ? "Automatic" : "Manual")</p>
@@ -76,16 +95,14 @@
                 </div>
                 <div class="booking-dates">
                     <h3>Booking Dates</h3>
-                    <p>From: @booking.FromDate.ToShortDateString()</p>
-                    <p>To: @booking.ToDate.ToShortDateString()</p>
+                    <p><strong>From:</strong> @booking.FromDate.ToShortDateString()</p>
+                    <p><strong>To:</strong> @booking.ToDate.ToShortDateString()</p>
                 </div>
             </div>
         }
     }
     else
     {
-        <div class="col">
-            <p>No bookings found.</p>
-        </div>
+        <p class="no-bookings">No bookings found.</p>
     }
 </div>

@@ -23,9 +23,9 @@ namespace RentACar_1.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult Index()
-        {
-            var filters = new CarFilterViewModel(); // Create an empty filter model initially
+		public IActionResult Index()
+		{
+			var filters = new CarFilterViewModel(); // Create an empty filter model initially
             var cars = GetFilteredCars(filters);
 
             var viewModel = new CarIndexViewModel
@@ -72,7 +72,7 @@ namespace RentACar_1.Controllers
 
             return cars;
         }
-        public IActionResult CarDetail(int carId, string? fromDate, string? toDate)
+        public async Task<IActionResult> CarDetail(int carId, string? fromDate, string? toDate)
         {
             // Retrieve the car details from the database based on the carId
             var carData = _dbContext.Cars
@@ -86,10 +86,10 @@ namespace RentACar_1.Controllers
             }
 
             // Retrieve reviews for the specified car
-            var reviews = _dbContext.Reviews
+            var reviews = await _dbContext.Reviews
 	            .Where(r => r.CarID == carId)
 	            .Include(r => r.Car) // Include the associated car
-	            .ToList();
+	            .ToListAsync();
 
 			// Map the retrieved data to CarDetailViewModel and pass it to the view
 			var viewModel = new CarDetailViewModel
@@ -308,8 +308,8 @@ namespace RentACar_1.Controllers
 			};
 
 			// Add the new review to the database
-			_dbContext.Reviews.Add(review);
-			_dbContext.SaveChangesAsync();
+			await _dbContext.Reviews.AddAsync(review);
+			await _dbContext.SaveChangesAsync();
 
 			// Redirect back to the car details page
 			return RedirectToAction("CarDetail", new { carId });

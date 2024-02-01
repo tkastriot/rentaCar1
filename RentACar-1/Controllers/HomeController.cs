@@ -51,6 +51,7 @@ namespace RentACar_1.Controllers
 					Power = c.CarDetail.Power,
 					PricePerDay = c.PricePerDay,
 					CarId = c.CarID,
+					ImageUrl = c.CarDetail.ImageUrl,
 				})
 				.ToList();
 

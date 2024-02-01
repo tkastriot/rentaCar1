@@ -92,6 +92,10 @@
         border: 1px solid #888;
         width: 70% !important;
     }
+
+    .no-cars {
+        min-height: 105px;
+    }
 </style>
 
 @if (TempData["ErrorMessage"] != null)
@@ -164,7 +168,7 @@
     }
     else
     {
-        <div class="col">
+        <div class="no-cars">
             <p>No cars found.</p>
         </div>
     }

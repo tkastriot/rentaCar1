@@ -1,69 +1,63 @@
-﻿<style>
-	/* Style for the container */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+﻿   @model RentACar_1.Models.Booking
 
-/* Style for the booking detail section */
-.booking-detail {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+<!-- Booking Detail -->
+<style>
+    .booking-detail-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-/* Style for the car image */
-.booking-detail img {
-    width: 100%;
-    border-radius: 5px;
-}
+    .booking-detail {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
 
-/* Style for car info */
-.car-info {
-    margin-top: 20px;
-}
+        .booking-detail img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
 
-.car-info h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
+    .car-info h3 {
+        color: #333;
+        margin-bottom: 10px;
+    }
 
-.car-info p {
-    margin-bottom: 5px;
-}
+    .car-info p {
+        margin-bottom: 5px;
+    }
 
-/* Style for renter detail section */
-.renter-detail {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+    .renter-detail {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
 
-/* Style for booking dates section */
-.booking-dates {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+    .booking-dates {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
 
-/* Style for icons */
-.booking-detail i {
-    margin-right: 5px;
-}
+        .booking-dates h3 {
+            color: #333;
+        }
 
+    .booking-detail i {
+        margin-right: 5px;
+    }
 </style>
 
-    @model RentACar_1.Models.Booking
-
-<div class="container">
-    <h1>Booking Detail</h1>
+<div class="booking-detail-container">
+    <h1 class="text-center">Booking Detail</h1>
     <div class="booking-detail">
         <h2>Booking ID: @Model.BookingID</h2>
         <div class="row">
